@@ -3,7 +3,6 @@ import ProblemStatement from "@/components/ProblemStatement";
 import Solution from "@/components/Solution";
 import Features from "@/components/Features"; // Services Preview
 import Experience from "@/components/Experience";
-import Recognition from "@/components/Recognition";
 import AIPlatformPreview from "@/components/AIPlatformPreview";
 import ClientTypes from "@/components/ClientTypes";
 import ClosingStatement from "@/components/ClosingStatement";
@@ -18,7 +17,6 @@ export default function Home() {
       <Solution />
       <Features />
       <Experience />
-      <Recognition />
       <AIPlatformPreview />
       <CinematicSection />
       <ClientTypes />

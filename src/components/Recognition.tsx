@@ -91,7 +91,7 @@ export default function Recognition() {
       badgeIcon: Star,
       title: "Recognized at the",
       titleGold: "Highest Level",
-      description: "Personally recognized for airworthiness authority and execution on one of the most advanced clean-sheet aircraft programs in modern aviation.",
+      description: "Personally recognized by Mr. Michimasa Fujino (Founder and CEO of HondaJet) for airworthiness authority and execution on one of the most advanced clean-sheet aircraft programs in modern aviation.",
       quote: "From certification strategy to execution — delivered at the level where decisions define programs.",
       footer: "Awarded for direct contribution to certification execution within the HondaJet program.",
       image: "/hondajet-award.png",
@@ -105,7 +105,7 @@ export default function Recognition() {
       titleGold: "Electric Aviation",
       description: "Partnering with Beta Technologies to navigate the complex regulatory roadmaps of eVTOL and zero-emission flight systems.",
       quote: "Defining the standards for the next generation of flight — from special airworthiness to full-scale type certification.",
-      footer: "Collaborating on major certification milestones for the ALIA electric aircraft with CEO Kyle Clark.",
+      footer: "Collaborating on major certification milestones for the ALIA electric aircraft with Kyle Clark (Founder and CEO of BETA Technology).",
       image: "/beta-certification.png",
       objectPos: "object-[50%_center] scale-125",
       reverse: true

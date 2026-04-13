@@ -30,25 +30,37 @@ export default function AboutPage() {
               </div>
            </div>
 
-           <motion.div
-             initial={{ opacity: 0, x: 30 }}
-             whileInView={{ opacity: 1, x: 0 }}
-             viewport={{ once: true }}
-           >
-              <h2 className="text-gold font-bold tracking-[0.2em] text-xs uppercase mb-6 flex items-center gap-2">
-                 <History className="w-4 h-4" /> THE MISSION
-              </h2>
-              <h3 className="text-4xl md:text-5xl font-serif font-bold mb-8">Authority Defined by <br />Experience.</h3>
-              <p className="text-white/60 text-lg leading-relaxed mb-8">
-                Aero Airworthiness was founded by veteran delegates who recognized a critical gap in the aerospace market: the lack of clear, authoritative leadership in the certification process. 
-              </p>
-              <p className="text-white/60 text-lg leading-relaxed mb-10">
-                Over the last 30 years, we have transitioned from traditional manufacturing to the frontier of electric flight and autonomous systems. Our mission remains unchanged: to provide the authority required to make flight possible.
-              </p>
-              <div className="p-8 border-l-2 border-gold bg-white/5 italic font-serif text-xl opacity-90">
-                "We don't just follow the regulations—we have been defining them for three decades."
-              </div>
-           </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+               <h2 className="text-gold font-bold tracking-[0.2em] text-xs uppercase mb-6 flex items-center gap-2">
+                  <History className="w-4 h-4" /> THE MISSION
+               </h2>
+               <h3 className="text-4xl md:text-5xl font-serif font-bold mb-8">Authority Defined by <br />Experience.</h3>
+               <p className="text-white/60 text-lg leading-relaxed mb-8">
+                 Aero Airworthiness was founded by veteran delegates who recognized a critical gap in the aerospace market: the lack of clear, authoritative leadership in the certification process. 
+               </p>
+               <p className="text-white/60 text-lg leading-relaxed mb-10">
+                 Over the last 30 years, we have transitioned from traditional manufacturing to the frontier of electric flight and autonomous systems. Our mission remains unchanged: to provide the authority required to make flight possible.
+               </p>
+               
+               {/* Technical Sketch Inset */}
+               <div className="hidden lg:block absolute -right-24 -bottom-16 w-64 aspect-[3/4] border border-white/10 rounded-sm overflow-hidden shadow-2xl rotate-3 group hover:rotate-0 transition-transform duration-700">
+                  <img 
+                    src="/clean-sheet-sketch.png" 
+                    alt="Legacy Clean Sheet Draft" 
+                    className="w-full h-full object-cover grayscale brightness-75 group-hover:brightness-100 transition-all"
+                  />
+                  <div className="absolute inset-0 bg-gold/10 mix-blend-overlay" />
+               </div>
+
+               <div className="p-8 border-l-2 border-gold bg-white/5 italic font-serif text-xl opacity-90 relative z-10">
+                 "We don't just follow the regulations—we have been defining them for three decades."
+               </div>
+            </motion.div>
         </div>
       </section>
 

@@ -23,9 +23,19 @@ export default function ContactForm({ standalone = true }: ContactFormProps) {
           <h3 className="text-4xl md:text-5xl font-serif font-bold leading-tight mb-8 text-white">
             Begin Your Certification Assessment.
           </h3>
-          <p className="text-lg text-white/60 leading-relaxed mb-12">
-            For executive-level consultation regarding DAR-F authority, 14 CFR §21.137 quality systems, or clean-sheet certification roadmaps, please submit your program details below.
-          </p>
+          <div className="text-lg text-white/60 leading-relaxed mb-12">
+            <p className="mb-4">
+              For executive-level consultation regarding DAR-F authority FAA, CERTIFICATION AUTHORITY
+            </p>
+            <ul className="space-y-1 text-base text-white/70">
+              <li>TIA • TC • PC • STC</li>
+              <li>Experimental (R&D • Show Comp • Market Survey • Crew Training) • SCoA</li>
+              <li>MRA • Export</li>
+              <li>PMA • 14 CFR §21.137</li>
+              <li>Conformity • Flight Test • Certification Execution</li>
+              <li>CTOL • Advanced Air Mobility (eVTOL)</li>
+            </ul>
+          </div>
 
           <div className="space-y-8">
             <div className="flex items-center gap-4">

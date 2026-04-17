@@ -83,14 +83,16 @@ export default function Hero() {
         >
           <div className="glass p-8 md:p-10 rounded-sm w-full max-w-[400px] border-gold/30">
             <h3 className="text-gold font-serif text-2xl font-bold mb-8 tracking-wide border-b border-gold/20 pb-4">
-              CERTIFICATION AUTHORITY
+              FAA CERTIFICATION AUTHORITY
             </h3>
-            <ul className="space-y-6">
+            <ul className="space-y-4">
               {[
-                "FAA DAR-F Authority",
-                "TC / PC / Experimental / SCoA",
-                "PMA & 14 CFR §21.137 Systems",
-                "Advanced Aerospace Programs"
+                "TIA • TC • PC • STC",
+                "Experimental (R&D • Show Comp • Market Survey • Crew Training) • SCoA",
+                "MRA • Export",
+                "PMA • 14 CFR §21.137",
+                "Conformity • Flight Test • Certification Execution",
+                "CTOL • Advanced Air Mobility (eVTOL)"
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start gap-4">
                   <div className="mt-1 bg-gold/20 p-1 rounded-full">

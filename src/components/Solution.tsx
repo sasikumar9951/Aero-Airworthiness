@@ -15,13 +15,18 @@ export default function Solution() {
             transition={{ duration: 0.8 }}
             className="order-2 lg:order-1"
           >
-            <div className="relative aspect-square max-w-[500px] mx-auto border-4 border-black/10 rounded-sm p-4">
-              <div className="absolute inset-0 bg-black/5 mix-blend-multiply" />
-              <img 
-                src="/solution-img.png" 
-                alt="Engineering Authority" 
-                className="w-full h-full object-cover grayscale contrast-125"
-              />
+            <div className="flex flex-col mx-auto max-w-[600px]">
+              <div className="relative aspect-square w-full border-4 border-black/10 rounded-sm p-4">
+                <div className="absolute inset-0 bg-black/5 mix-blend-multiply" />
+                <img 
+                  src="/solution-img.png" 
+                  alt="Engineering Authority" 
+                  className="w-full h-full object-cover grayscale contrast-100 opacity-90 hover:opacity-100 transition-opacity"
+                />
+              </div>
+              <p className="mt-6 text-center font-serif text-lg md:text-xl font-bold tracking-wider text-black/70">
+                Precision in detail. Authority in certification.
+              </p>
             </div>
           </motion.div>
 

@@ -18,7 +18,7 @@ const features = [
     title: "Technical Excellence",
     icon: Target,
     points: [
-      "DER-F engineering oversight",
+      "DAR-F engineering oversight",
       "Flight test safety and data analysis",
       "Design approval (TC/STC) support",
       "Technical standard order (TSO) guidance"

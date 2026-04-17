@@ -37,7 +37,7 @@ export default function ProblemStatement() {
               },
               {
                 title: "Certification Deadlocks",
-                desc: "Clean-sheet programs often stall at the 'Experimental' stage due to lack of production-ready quality systems.",
+                desc: "Clean-sheet programs don’t fail in engineering- they fail when configuration control collapses and the aircraft no longer match its approved design",
                 icon: Clock
               }
             ].map((item, idx) => (

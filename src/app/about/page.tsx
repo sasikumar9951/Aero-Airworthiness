@@ -73,7 +73,7 @@ export default function AboutPage() {
             {[
               { val: "30+", label: "Years in Aviation", icon: History },
               { val: "18", label: "Years DAR-F Authority", icon: Shield },
-              { val: "500+", label: "Approved Programs", icon: Plane },
+              { val: "50+", label: "Approved Programs", icon: Plane },
               { val: "12", label: "Elite FAA Commendations", icon: Award }
             ].map((stat, idx) => (
               <motion.div 

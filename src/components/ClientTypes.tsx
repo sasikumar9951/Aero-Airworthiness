@@ -5,7 +5,7 @@ import { Plane, Rocket, Settings, Users } from "lucide-react";
 
 const clients = [
   { name: "Global OEMs", icon: Settings, desc: "Tier-1 aircraft manufacturers seeking production certification." },
-  { name: "eVTOL Startups", icon: Rocket, desc: "Next-gen mobility companies with clean-sheet designs." },
+  { name: "eVTOL/eCTOL Startups", icon: Rocket, desc: "Next-gen mobility companies with clean-sheet designs." },
   { name: "MRO Facilities", icon: Plane, desc: "Maintenance organizations requiring STC and PMA authority." },
   { name: "Defense Programs", icon: Users, desc: "Advanced aerospace programs for government initiatives." },
 ];

@@ -92,7 +92,7 @@ export default function Hero() {
                 "MRA • Export",
                 "PMA • 14 CFR §21.137",
                 "Conformity • Flight Test • Certification Execution",
-                "CTOL • Advanced Air Mobility (eVTOL)"
+                "eVTOL/eCTOL • Advanced Air Mobility"
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start gap-4">
                   <div className="mt-1 bg-gold/20 p-1 rounded-full">

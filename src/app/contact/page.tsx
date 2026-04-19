@@ -43,6 +43,20 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* Production Authority Banner */}
+      <section className="px-6 md:px-12 lg:px-24 mb-12 relative z-20">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="relative w-full overflow-hidden rounded-sm border border-white/10 shadow-2xl bg-zinc-900">
+            <img 
+              src="/production-authority.png" 
+              alt="Production Certification Authority" 
+              className="w-full h-auto grayscale brightness-90 hover:brightness-100 transition-all duration-700 block"
+            />
+            <div className="absolute inset-0 bg-gold/5 mix-blend-multiply pointer-events-none" />
+          </div>
+        </div>
+      </section>
+
       {/* Form Section: Cinematic Layout */}
       <section className="py-24 px-6 md:px-12 lg:px-24 relative overflow-hidden">
         {/* Abstract background blur */}

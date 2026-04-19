@@ -70,7 +70,7 @@ function Milestone({ badge, badgeIcon: BadgeIcon, title, titleGold, description,
         <div className="absolute -top-6 -right-6 w-24 h-24 border-t border-r border-gold/40 rounded-sm pointer-events-none" />
         <div className="absolute -bottom-6 -left-6 w-24 h-24 border-b border-l border-gold/40 rounded-sm pointer-events-none" />
 
-        <div className="relative z-10 aspect-[4/5] overflow-hidden rounded-sm shadow-2xl shadow-black/50 bg-zinc-900 mx-auto">
+        <div className="relative z-10 aspect-video lg:aspect-[4/5] overflow-hidden rounded-sm shadow-2xl shadow-black/50 bg-zinc-900 mx-auto">
           <img 
             src={image} 
             alt={title} 
@@ -103,7 +103,7 @@ export default function Recognition() {
       badgeIcon: Zap,
       title: "Pioneering the Future of",
       titleGold: "Electric Aviation",
-      description: "Partnering with Beta Technologies to navigate the complex regulatory roadmaps of eVTOL and zero-emission flight systems.",
+      description: "Partnering with Beta Technologies to navigate the complex regulatory roadmaps of eVTOL/eCTOL and zero-emission flight systems.",
       quote: "Defining the standards for the next generation of flight — from special airworthiness to full-scale type certification.",
       footer: "Collaborating on major certification milestones for the ALIA electric aircraft with Kyle Clark (Founder and CEO of BETA Technology).",
       image: "/beta-certification.png",

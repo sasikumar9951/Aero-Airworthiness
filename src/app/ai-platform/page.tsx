@@ -71,7 +71,7 @@ export default function AIPlatformPage() {
          <div className="max-w-[1200px] mx-auto">
             <div className="text-center mb-20">
                <h3 className="text-3xl font-serif font-bold mb-6">Engineered for Advanced Tech</h3>
-               <p className="text-white/40 max-w-xl mx-auto uppercase tracking-widest text-[10px] font-bold">Optimized for eVTOL, Supersonic, and Hydrogen Propulsion Systems</p>
+               <p className="text-white/40 max-w-xl mx-auto uppercase tracking-widest text-[10px] font-bold">Optimized for eVTOL/eCTOL, Supersonic, and Hydrogen Propulsion Systems</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/5">
@@ -103,7 +103,7 @@ export default function AIPlatformPage() {
                   <div className="p-8 font-mono text-sm space-y-4">
                      <p className="text-gold">&gt; Initializing Aero-Link AI Core [Authority Context Enabled]</p>
                      <p className="text-white/60">&gt; Loading 14 CFR Part 23 Amdt. 64 Data Layers...</p>
-                     <p className="text-white/60">&gt; Mapping Engineering Specifications [Spec ID: #eVTOL-2234]...</p>
+                     <p className="text-white/60">&gt; Mapping Engineering Specifications [Spec ID: #eVTOL-eCTOL-2234]...</p>
                      <div className="flex items-center gap-4 py-4">
                         <div className="flex-1 h-2 bg-white/5 rounded-full overflow-hidden">
                            <motion.div 

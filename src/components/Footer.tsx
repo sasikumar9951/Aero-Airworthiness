@@ -21,7 +21,7 @@ export default function Footer() {
             </div>
           </Link>
           <p className="text-[15px] text-gray-400 leading-relaxed mb-6 md:text-sm md:text-gray-500">
-            Providing elite FAA DAR-F authority and full-spectrum certification support since 1994. Excellence in aerospace regulatory compliance.
+            Providing elite FAA DAR-F authority and full-spectrum certification support since 2008. Excellence in aerospace regulatory compliance.
           </p>
         </div>
 

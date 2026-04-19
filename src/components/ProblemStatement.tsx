@@ -66,7 +66,7 @@ export default function ProblemStatement() {
           className="lg:col-span-5 relative group"
         >
           <div className="absolute -inset-4 border border-white/5 rounded-sm pointer-events-none group-hover:border-gold/20 transition-colors duration-700" />
-          <div className="relative aspect-[3/4] overflow-hidden rounded-sm shadow-2xl shadow-gold/5 bg-zinc-900">
+          <div className="relative aspect-video lg:aspect-[3/4] overflow-hidden rounded-sm shadow-2xl shadow-gold/5 bg-zinc-900">
              <img 
                src="/clean-sheet-sketch.png" 
                alt="Clean Sheet Concept Draft" 

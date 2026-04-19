@@ -9,7 +9,7 @@ export default function AboutPage() {
   return (
     <main className="bg-black text-white min-h-screen">
       <SubPageHero 
-        badge="ESTABLISHED 1994"
+        badge="ESTABLISHED 2008"
         title="Decades of Regulatory Command."
         subtitle="A heritage built on integrity, authority, and the safe integration of revolutionary aerospace technologies."
         image="/about-hero.png"
@@ -26,7 +26,7 @@ export default function AboutPage() {
               />
               <div className="absolute inset-0 bg-gold/5 mix-blend-multiply" />
               <div className="absolute top-12 left-12">
-                 <p className="text-gold font-serif text-6xl font-bold opacity-20">1994</p>
+                 <p className="text-gold font-serif text-6xl font-bold opacity-20">2008</p>
               </div>
            </div>
 

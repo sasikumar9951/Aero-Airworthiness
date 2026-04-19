@@ -33,7 +33,7 @@ export default function ContactForm({ standalone = true }: ContactFormProps) {
               <li>MRA • Export</li>
               <li>PMA • 14 CFR §21.137</li>
               <li>Conformity • Flight Test • Certification Execution</li>
-              <li>CTOL • Advanced Air Mobility (eVTOL)</li>
+              <li>eVTOL/eCTOL • Advanced Air Mobility</li>
             </ul>
           </div>
 

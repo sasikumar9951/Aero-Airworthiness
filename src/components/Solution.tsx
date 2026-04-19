@@ -16,7 +16,10 @@ export default function Solution() {
             className="order-2 lg:order-1"
           >
             <div className="flex flex-col mx-auto max-w-[600px]">
-              <div className="relative aspect-square w-full border-4 border-black/10 rounded-sm p-4">
+              <p className="mb-6 text-center font-serif text-lg md:text-xl font-bold tracking-wider text-black/70">
+                Precision in detail. Authority in certification.
+              </p>
+              <div className="relative aspect-video md:aspect-square w-full border-4 border-black/10 rounded-sm p-4">
                 <div className="absolute inset-0 bg-black/5 mix-blend-multiply" />
                 <img 
                   src="/solution-img.png" 
@@ -24,9 +27,6 @@ export default function Solution() {
                   className="w-full h-full object-cover grayscale contrast-100 opacity-90 hover:opacity-100 transition-opacity"
                 />
               </div>
-              <p className="mt-6 text-center font-serif text-lg md:text-xl font-bold tracking-wider text-black/70">
-                Precision in detail. Authority in certification.
-              </p>
             </div>
           </motion.div>
 
@@ -41,23 +41,23 @@ export default function Solution() {
               <ShieldCheck className="w-4 h-4" /> THE AERO SOLUTION
             </h2>
             <h3 className="text-4xl md:text-5xl font-serif font-bold leading-tight mb-8">
-              Authority-Driven Certification. <br />
-              <span className="text-black/50">From Concept to Canopy.</span>
+              Authority-Driven Certification <br />
+              <span className="text-black/50">From Clean Sheet to Certified Aircraft</span>
             </h3>
             
             <div className="space-y-8">
               {[
                 {
-                  title: "Direct FAA DAR-F Delegation",
-                  desc: "We provide direct delegation authority, bypassing traditional bureaucratic queues to accelerate your approval timeline."
+                  title: "Direct FAA DAR-F Execution",
+                  desc: "We operate within delegated FAA authority to execute certification activities efficiently, reducing delays while maintaining full compliance."
                 },
                 {
-                  title: "End-to-End Compliance Ownership",
-                  desc: "We don't just advise; we own the certification process, integrating with your engineering team to ensure every rivet meets 14 CFR standards."
+                  title: "End-to-End Certification Control",
+                  desc: "We embed directly into your program to drive certification from concept through conformity, flight test, and approval."
                 },
                 {
-                  title: "Proven Aerospace Pedigree",
-                  desc: "With 30+ years of airworthiness authority, we provide the credibility your program needs with regulatory bodies worldwide."
+                  title: "Proven Certification Leadership",
+                  desc: "30+ years of airworthiness authority across experimental, standard certification, and production-level programs."
                 }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-4">

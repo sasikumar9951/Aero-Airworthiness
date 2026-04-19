@@ -1,10 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Shield, Plane, Settings, Zap, ArrowRight, FileText, Globe } from "lucide-react";
 import SubPageHero from "@/components/SubPageHero";
 
 export default function ServicesPage() {
+  const [activeTab, setActiveTab] = useState(0);
+
   return (
     <main className="bg-black text-white min-h-screen">
       <SubPageHero 
@@ -53,7 +56,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Showcase: Cinematic Cards */}
+      {/* Services Showcase: Interactive Premium Tabs */}
       <section className="py-24 px-6 md:px-12 lg:px-24 bg-zinc-950">
         <div className="max-w-[1200px] mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
@@ -64,105 +67,118 @@ export default function ServicesPage() {
             <p className="text-white/40 max-w-sm text-sm">Dedicated specialists for Part 21, 23, 25, 27, and 29 certification programs.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5">
-            {[
-              {
-                title: "Type Certification & Design Approval",
-                icon: Shield,
-                items: [
-                  "Type Certification (TC) support, including clean-sheet aircraft programs",
-                  "Supplemental Type Certificate (STC) modification support",
-                  "Certification pathways aligned with FAA requirements",
-                  "Executive-level certification briefings"
-                ],
-                img: "/tc-card-bg.png"
-              },
-              {
-                title: "Production Certification & Quality Systems",
-                icon: Settings,
-                items: [
-                  "Production Certification (PC) support and manufacturing approvals",
-                  "14 CFR §21.137 quality system compliance",
-                  "Supplier quality and supply chain audits",
-                  "Executive-level production briefings"
-                ],
-                img: "/production-authority.png",
-                hideOverlay: true
-              },
-              {
-                title: "Experimental & SCoA",
-                icon: Zap,
-                items: [
-                  "Experimental certification support (R&D, flight permits), including market survey and crew training",
-                  "Standard Certificate of Airworthiness (SCoA) support",
-                  "Airworthiness approval alignment and FAA coordination",
-                  "Executive-level certification briefings"
-                ],
-                img: "/exp-card-bg.png"
-              },
-              {
-                title: "PMA & TSO Compliance",
-                icon: Plane,
-                items: [
-                  "PMA and TSO certification support and compliance alignment",
-                  "Design and production approval support",
-                  "Test planning, analysis, and compliance validation"
-                ],
-                img: "/pma-card-bg.png"
-              },
-              {
-                title: "Certification Documentation & Program Support",
-                icon: FileText,
-                items: [
-                  "CIP and PSCP development and alignment",
-                  "Program Letter and Agent Letter preparation",
-                  "Certification processes and procedures definition",
-                  "Flight test support and documentation"
-                ],
-                img: "/doc-card-bg.png"
-              },
-              {
-                title: "Global Regulatory Scope & Integration",
-                icon: Globe,
-                items: [
-                   "Direct delegation authority with FAA MIDO/ACO offices",
-                   "Global regulatory alignment (EASA, TCCA, ANAC)",
-                   "Strategic certification program management",
-                   "Executive-level regulatory briefings"
-                ],
-                img: "/global-scope-bg.png"
-              }
-            ].map((service: any, idx) => (
+          <div className="flex flex-col lg:flex-row gap-12">
+            {/* Tab Navigation */}
+            <div className="lg:w-1/3 flex flex-col gap-2">
+              {[
+                { id: 0, title: "Type Certification & Design Approval", icon: Shield },
+                { id: 1, title: "Production Certification & Quality Systems", icon: Settings },
+                { id: 2, title: "Experimental & SCoA", icon: Zap },
+                { id: 3, title: "PMA & TSO Compliance", icon: Plane },
+                { id: 4, title: "Certification Documentation & Program Support", icon: FileText }
+              ].map((tab, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveTab(idx)}
+                  className={`group flex items-center gap-4 p-6 transition-all duration-500 border-l-2 text-left ${
+                    activeTab === idx 
+                      ? 'bg-gold/5 border-gold text-white' 
+                      : 'bg-transparent border-white/5 text-white/40 hover:bg-white/5 hover:border-white/20'
+                  }`}
+                >
+                  <tab.icon className={`w-5 h-5 transition-colors duration-500 ${activeTab === idx ? 'text-gold' : 'text-white/20 group-hover:text-gold/50'}`} />
+                  <span className="text-sm font-bold tracking-widest uppercase">{tab.title}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Tab Content Area */}
+            <div className="lg:w-2/3 min-h-[500px] relative overflow-hidden bg-black border border-white/10 p-8 md:p-12 flex flex-col justify-between">
               <motion.div
-                key={idx}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                className="group relative min-h-[480px] overflow-hidden bg-black p-12 flex flex-col justify-end"
+                key={activeTab}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.5 }}
+                className="relative z-10"
               >
-                <div className={`absolute inset-0 ${service.hideOverlay ? 'opacity-90 grayscale-0' : 'opacity-40 grayscale group-hover:scale-110 group-hover:opacity-60'} transition-all duration-[3s]`}>
-                   <img src={service.img} alt={service.title} className="w-full h-full object-cover" />
+                {/* Full Background Image */}
+                <div className="absolute inset-0 opacity-30 pointer-events-none overflow-hidden">
+                  <img 
+                    src={[
+                      "/tc-card-bg.png",
+                      "/production-authority.png",
+                      "/exp-card-bg.png",
+                      "/pma-card-bg.png",
+                      "/doc-card-bg.png"
+                    ][activeTab]} 
+                    alt="Background Detail"
+                    className="w-full h-full object-cover grayscale group-hover:scale-110 transition-transform duration-[3s]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                 </div>
-                {!service.hideOverlay && <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />}
-                
-                {!service.hideOverlay && (
-                  <div className="relative z-10">
-                    <service.icon className="w-8 h-8 text-gold mb-6" />
-                    <h4 className="text-3xl font-serif font-bold mb-6">{service.title}</h4>
-                    <ul className="space-y-3 mb-8">
-                      {service.items.map((item: any, i: number) => (
-                        <li key={i} className="text-white/40 text-xs tracking-widest font-bold uppercase flex items-center gap-2">
-                            <div className="w-1 h-1 bg-gold rounded-full" /> {item}
+
+                <div className="relative z-10">
+                   <h4 className="text-3xl font-serif font-bold mb-8 text-gold">
+                      {[
+                        "Type Certification & Design Approval",
+                        "Production Certification & Quality Systems",
+                        "Experimental & SCoA",
+                        "PMA & TSO Compliance",
+                        "Certification Documentation & Program Support"
+                      ][activeTab]}
+                   </h4>
+                   <ul className="space-y-6 mb-12">
+                      {[
+                        [
+                          "Type Certification (TC) support, including clean-sheet aircraft programs",
+                          "Supplemental Type Certificate (STC) modification support",
+                          "Certification pathways aligned with FAA requirements",
+                          "Executive-level certification briefings"
+                        ],
+                        [
+                          "Production Certification (PC) support and manufacturing approvals",
+                          "14 CFR §21.137 quality system compliance",
+                          "Supplier quality and supply chain audits",
+                          "Executive-level production briefings"
+                        ],
+                        [
+                          "Experimental certification support (R&D, flight permits), including market survey and crew training",
+                          "Standard Certificate of Airworthiness (SCoA) support",
+                          "Airworthiness approval alignment and FAA coordination",
+                          "Executive-level certification briefings"
+                        ],
+                        [
+                          "PMA and TSO certification support and compliance alignment",
+                          "Design and production approval support",
+                          "Test planning, analysis, and compliance validation"
+                        ],
+                        [
+                          "CIP and PSCP development and alignment",
+                          "Program Letter and Agent Letter preparation",
+                          "Certification processes and procedures definition",
+                          "Flight test support and documentation"
+                        ]
+                      ][activeTab].map((item, i) => (
+                        <li key={i} className="flex gap-4 group">
+                           <div className="mt-1.5 w-1.5 h-1.5 bg-gold rounded-full shrink-0 shadow-[0_0_10px_rgba(212,175,55,0.5)]" />
+                           <p className="text-white/60 text-lg leading-relaxed group-hover:text-white transition-colors uppercase tracking-wider text-xs font-bold">
+                              {item}
+                           </p>
                         </li>
                       ))}
-                    </ul>
-                    <button className="flex items-center gap-2 text-gold text-xs font-bold tracking-widest uppercase group/link">
-                        Detailed Briefing <ArrowRight className="w-4 h-4 group-hover/link:translate-x-2 transition-transform" />
-                    </button>
-                  </div>
-                )}
+                   </ul>
+                   
+                   <button className="flex items-center gap-2 text-gold text-xs font-bold tracking-[0.2em] uppercase group/link border-b border-gold/20 pb-2 hover:border-gold transition-all">
+                        Request Program Briefing <ArrowRight className="w-4 h-4 group-hover/link:translate-x-2 transition-transform" />
+                   </button>
+                </div>
               </motion.div>
-            ))}
+              
+              {/* Glass Overlays for Elite Feel */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
+              <div className="absolute bottom-0 right-0 w-32 h-32 bg-gold/5 blur-[80px] pointer-events-none" />
+            </div>
           </div>
         </div>
       </section>

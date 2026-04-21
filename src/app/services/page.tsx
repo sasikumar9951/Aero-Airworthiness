@@ -43,9 +43,9 @@ export default function ServicesPage() {
            </motion.div>
            <div className="relative aspect-video lg:aspect-square group overflow-hidden border border-white/10 rounded-sm">
               <img 
-                src="https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?auto=format&fit=crop&q=80&w=1200" 
+                src="/ServiceContent.png" 
                 alt="Jet Inspection" 
-                className="w-full h-full object-cover grayscale brightness-50 group-hover:scale-110 transition-transform duration-[3s]"
+                className="w-full h-full object-cover brightness-90 group-hover:scale-110 transition-transform duration-[3s]"
               />
               <div className="absolute inset-0 bg-gold/5 mix-blend-multiply" />
               <div className="absolute inset-x-8 bottom-8 p-6 glass border-gold/20 flex items-center justify-between">
@@ -103,7 +103,7 @@ export default function ServicesPage() {
                 className="relative z-10"
               >
                 {/* Full Background Image */}
-                <div className="absolute inset-0 opacity-30 pointer-events-none overflow-hidden">
+                <div className="absolute inset-0 opacity-60 pointer-events-none overflow-hidden">
                   <img 
                     src={[
                       "/tc-card-bg.png",
@@ -113,9 +113,9 @@ export default function ServicesPage() {
                       "/doc-card-bg.png"
                     ][activeTab]} 
                     alt="Background Detail"
-                    className="w-full h-full object-cover grayscale group-hover:scale-110 transition-transform duration-[3s]"
+                    className="w-full h-full object-cover brightness-110 group-hover:scale-110 transition-transform duration-[3s]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 </div>
 
                 <div className="relative z-10">

@@ -8,13 +8,13 @@ export default function ProblemStatement() {
     <section className="py-24 px-6 md:px-12 lg:px-24 bg-black text-white overflow-hidden relative">
       <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         {/* Left Column: Context & Stats */}
-        <div className="lg:col-span-7">
+        <div className="lg:col-span-12">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="mb-16"
+            className="mb-16 max-w-4xl"
           >
             <h2 className="text-gold font-bold tracking-[0.2em] text-sm uppercase mb-6 flex items-center gap-2">
               <AlertTriangle className="w-4 h-4" /> THE REGULATORY BOTTLENECK
@@ -28,7 +28,7 @@ export default function ProblemStatement() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
                 title: "Complex Compliance Mapping",
@@ -39,6 +39,11 @@ export default function ProblemStatement() {
                 title: "Certification Deadlocks",
                 desc: "Clean-sheet programs don’t fail in engineering- they fail when configuration control collapses and the aircraft no longer match its approved design",
                 icon: Clock
+              },
+              {
+                title: "Regulatory Stagnation",
+                desc: "Traditional processes often struggle to keep pace with the rapid advancements in propulsion and autonomous flight.",
+                icon: AlertTriangle
               }
             ].map((item, idx) => (
               <motion.div
@@ -56,33 +61,6 @@ export default function ProblemStatement() {
             ))}
           </div>
         </div>
-
-        {/* Right Column: The Sketch */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
-          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="lg:col-span-5 relative group"
-        >
-          <div className="absolute -inset-4 border border-white/5 rounded-sm pointer-events-none group-hover:border-gold/20 transition-colors duration-700" />
-          <div className="relative aspect-video lg:aspect-[3/4] overflow-hidden rounded-sm shadow-2xl shadow-gold/5 bg-zinc-900">
-             <img 
-               src="/clean-sheet-sketch.png" 
-               alt="Clean Sheet Concept Draft" 
-               className="w-full h-full object-cover grayscale contrast-125 opacity-80 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
-             />
-             {/* Paper Texture Overlay (Approximate with CSS) */}
-             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')] opacity-20 pointer-events-none mix-blend-overlay" />
-             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-             
-             {/* Badge */}
-             <div className="absolute bottom-6 left-6 right-6 p-4 glass border-white/10 backdrop-blur-md">
-                <p className="text-[10px] font-bold text-gold uppercase tracking-[0.3em]">Concept Phase 01</p>
-                <p className="text-sm font-serif italic text-white/70 mt-1">"The Clean Sheet Blueprint"</p>
-             </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

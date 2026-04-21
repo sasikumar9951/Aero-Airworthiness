@@ -24,7 +24,7 @@ export default function Solution() {
                 <img 
                   src="/solution-img.png" 
                   alt="Engineering Authority" 
-                  className="w-full h-full object-cover grayscale contrast-100 opacity-90 hover:opacity-100 transition-opacity"
+                  className="w-full h-full object-cover contrast-100 opacity-90 hover:opacity-100 transition-opacity"
                 />
               </div>
             </div>

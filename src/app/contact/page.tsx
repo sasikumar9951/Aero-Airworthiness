@@ -20,8 +20,8 @@ export default function ContactPage() {
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 -mt-32">
             {[
-              { label: "Executive Email", val: "authority@aeroair.com", icon: Mail },
-              { label: "DAR-F Phone", val: "+1 (555) AER-CERT", icon: Phone },
+              { label: "Executive Email", val: "info@aeroairworthiness.com", icon: Mail },
+              { label: "DAR-F Phone", val: "+1 (336) 370-5825", icon: Phone },
               { label: "HQ Operations", val: "Florida, USA", icon: MapPin },
               { label: "Authority Desk", val: "Global Scope", icon: Globe },
             ].map((item, idx) => (

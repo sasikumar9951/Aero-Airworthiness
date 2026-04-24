@@ -81,6 +81,47 @@ export default function AboutPage() {
       </section>
 
       <Recognition />
+      
+      {/* Strategic Partnership Spotlights */}
+      <section className="bg-black py-12">
+        {/* Whisper Aero */}
+        <div className="py-12 px-6 md:px-12 lg:px-24 max-w-[1200px] mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="relative aspect-[16/10] md:aspect-[21/9] overflow-hidden rounded-sm border border-white/10 shadow-2xl group"
+          >
+            <img 
+              src="/whisper-aero-partnership.png" 
+              alt="Whisper Aero Partnership - Quiet Propulsion Certification" 
+              className="w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gold/5 mix-blend-multiply pointer-events-none" />
+            <div className="absolute inset-0 ring-1 ring-inset ring-white/10 pointer-events-none" />
+          </motion.div>
+        </div>
+
+        {/* Beringer Aero PMA */}
+        <div className="py-12 px-6 md:px-12 lg:px-24 max-w-[1200px] mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="relative aspect-[16/10] md:aspect-[21/9] overflow-hidden rounded-sm border border-white/10 shadow-2xl group"
+          >
+            <img 
+              src="/beringer-pma-partnership.png" 
+              alt="Beringer Aero Partnership - PMA Certification Authority" 
+              className="w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gold/5 mix-blend-multiply pointer-events-none" />
+            <div className="absolute inset-0 ring-1 ring-inset ring-white/10 pointer-events-none" />
+          </motion.div>
+        </div>
+      </section>
 
       {/* Cinematic Stats Section */}
       <section className="py-24 px-6 md:px-12 lg:px-24 bg-zinc-950 border-y border-white/5">

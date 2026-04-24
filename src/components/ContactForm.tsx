@@ -44,7 +44,7 @@ export default function ContactForm({ standalone = true }: ContactFormProps) {
                </div>
                <div>
                  <p className="text-sm font-bold uppercase tracking-widest text-white/30">Headquarters</p>
-                 <p className="font-serif text-white">Aerospace Certification Center, FL</p>
+                 <p className="font-serif text-white">North Carolina Greensboro USA</p>
                </div>
             </div>
             <div className="flex items-center gap-4">

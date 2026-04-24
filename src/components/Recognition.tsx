@@ -14,9 +14,22 @@ interface MilestoneProps {
   image: string;
   objectPos: string;
   reverse?: boolean;
+  capabilities?: { title: string; desc: string }[];
 }
 
-function Milestone({ badge, badgeIcon: BadgeIcon, title, titleGold, description, quote, footer, image, objectPos, reverse = false }: MilestoneProps) {
+function Milestone({ 
+  badge, 
+  badgeIcon: BadgeIcon, 
+  title, 
+  titleGold, 
+  description, 
+  quote, 
+  footer, 
+  image, 
+  objectPos, 
+  reverse = false,
+  capabilities 
+}: MilestoneProps) {
   return (
     <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center py-20">
       {/* Content Side */}
@@ -44,6 +57,21 @@ function Milestone({ badge, badgeIcon: BadgeIcon, title, titleGold, description,
         <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-8 font-sans">
           {description}
         </p>
+
+        {capabilities && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 mb-12 border-l border-white/10 pl-8">
+            {capabilities.map((cap, i) => (
+              <div key={i} className="group/cap">
+                <h4 className="text-[10px] font-bold text-white uppercase tracking-[0.2em] mb-2 group-hover/cap:text-gold transition-colors">
+                  {cap.title}
+                </h4>
+                <p className="text-[11px] text-white/40 leading-relaxed font-medium">
+                  {cap.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
 
         <p className="text-white/50 text-base leading-relaxed mb-10 italic font-serif">
           "{quote}"
@@ -132,3 +160,4 @@ export default function Recognition() {
     </section>
   );
 }
+

@@ -22,7 +22,7 @@ export default function ContactPage() {
             {[
               { label: "Executive Email", val: "info@aeroairworthiness.com", icon: Mail },
               { label: "DAR-F Phone", val: "+1 (336) 370-5825", icon: Phone },
-              { label: "HQ Operations", val: "Florida, USA", icon: MapPin },
+              { label: "HQ Operations", val: "North Carolina Greensboro USA", icon: MapPin },
               { label: "Authority Desk", val: "Global Scope", icon: Globe },
             ].map((item, idx) => (
               <motion.div

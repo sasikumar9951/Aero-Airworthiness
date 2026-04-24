@@ -61,7 +61,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-3">
               <MapPin className="w-4 h-4 text-gold" />
-              <span>Global Remote DAR-F Authority</span>
+              <span>North Carolina Greensboro USA</span>
             </li>
           </ul>
         </div>

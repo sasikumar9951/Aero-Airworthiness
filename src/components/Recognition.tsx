@@ -117,7 +117,7 @@ function Milestone({
 }
 
 export default function Recognition() {
-  const milestones = [
+  const milestones: MilestoneProps[] = [
     {
       badge: "ELITE COMMENDATION",
       badgeIcon: Star,

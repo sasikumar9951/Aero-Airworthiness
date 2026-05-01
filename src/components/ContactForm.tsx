@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, MapPin, Phone, Mail, Shield, CheckCircle } from "lucide-react";
 
@@ -8,6 +9,38 @@ interface ContactFormProps {
 }
 
 export default function ContactForm({ standalone = true }: ContactFormProps) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/info@aeroairworthiness.com", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json'
+        },
+        body: formData
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        e.currentTarget.reset();
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const content = (
     <div className={`max-w-[1200px] mx-auto grid grid-cols-1 ${standalone ? 'lg:grid-cols-2' : ''} gap-16`}>
       {standalone && (
@@ -67,7 +100,7 @@ export default function ContactForm({ standalone = true }: ContactFormProps) {
          transition={{ duration: 1 }}
          className={`${standalone ? 'bg-zinc-900/50 p-8 md:p-12 border border-white/10' : ''} rounded-sm`}
       >
-        <form action="https://formsubmit.co/info@aeroairworthiness.com" method="POST" className="space-y-8">
+        <form onSubmit={handleSubmit} className="space-y-8">
           {/* FormSubmit Configuration */}
           <input type="hidden" name="_subject" value="New Certification Assessment Request" />
           <input type="hidden" name="_captcha" value="false" />
@@ -131,11 +164,27 @@ export default function ContactForm({ standalone = true }: ContactFormProps) {
             />
           </div>
 
-          <button type="submit" className="w-full py-5 bg-gold text-black font-bold flex items-center justify-center gap-3 hover:bg-white transition-all duration-500 group">
-            <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" /> 
-            INITIALIZE ASSESSMENT
+          <button 
+            type="submit" 
+            disabled={isSubmitting}
+            className="w-full py-5 bg-gold text-black font-bold flex items-center justify-center gap-3 hover:bg-white transition-all duration-500 group disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+            <Send className={`w-4 h-4 ${!isSubmitting && 'group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform'}`} /> 
+            {isSubmitting ? "INITIALIZING..." : "INITIALIZE ASSESSMENT"}
           </button>
           
+          {submitStatus === "success" && (
+            <div className="p-4 bg-green-500/20 border border-green-500/50 text-green-400 text-sm text-center rounded-sm font-medium tracking-wide">
+              Your assessment request has been securely transmitted. We will be in touch shortly.
+            </div>
+          )}
+
+          {submitStatus === "error" && (
+            <div className="p-4 bg-red-500/20 border border-red-500/50 text-red-400 text-sm text-center rounded-sm font-medium tracking-wide">
+              An error occurred while transmitting your request. Please try again.
+            </div>
+          )}
+
           <div className="flex items-center justify-center gap-2 text-[10px] text-white/20 uppercase tracking-widest font-bold">
             <CheckCircle className="w-3 h-3 text-gold" />
             Secure Authority Channel

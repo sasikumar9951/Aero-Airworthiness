@@ -67,12 +67,18 @@ export default function ContactForm({ standalone = true }: ContactFormProps) {
          transition={{ duration: 1 }}
          className={`${standalone ? 'bg-zinc-900/50 p-8 md:p-12 border border-white/10' : ''} rounded-sm`}
       >
-        <form className="space-y-8">
+        <form action="https://formsubmit.co/info@aeroairworthiness.com" method="POST" className="space-y-8">
+          {/* FormSubmit Configuration */}
+          <input type="hidden" name="_subject" value="New Certification Assessment Request" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-3">
               <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 ml-1">Full Name</label>
               <input 
                 type="text" 
+                name="name"
+                required
                 className="w-full p-4 bg-white/5 border border-white/10 text-white focus:border-gold outline-none transition-all duration-300 placeholder:text-white/10" 
                 placeholder="PRINCIPAL REPRESENTATIVE" 
               />
@@ -81,6 +87,8 @@ export default function ContactForm({ standalone = true }: ContactFormProps) {
               <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 ml-1">Email Address</label>
               <input 
                 type="email" 
+                name="email"
+                required
                 className="w-full p-4 bg-white/5 border border-white/10 text-white focus:border-gold outline-none transition-all duration-300 placeholder:text-white/10" 
                 placeholder="AUTHORITY@COMPANY.AERO" 
               />
@@ -91,6 +99,7 @@ export default function ContactForm({ standalone = true }: ContactFormProps) {
             <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 ml-1">Company / Organization</label>
             <input 
               type="text" 
+              name="company"
               className="w-full p-4 bg-white/5 border border-white/10 text-white focus:border-gold outline-none transition-all duration-300 placeholder:text-white/10" 
               placeholder="AEROSPACE TECHNOLOGIES INC." 
             />
@@ -99,12 +108,12 @@ export default function ContactForm({ standalone = true }: ContactFormProps) {
           <div className="space-y-3">
             <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 ml-1">Certification Goal</label>
             <div className="relative">
-              <select className="w-full p-4 bg-white/5 border border-white/10 text-white focus:border-gold outline-none transition-all duration-300 appearance-none cursor-pointer">
-                <option className="bg-zinc-900">New Production Certificate (PC)</option>
-                <option className="bg-zinc-900">Experimental Authority (SCoA)</option>
-                <option className="bg-zinc-900">Parts Manufacturer Approval (PMA)</option>
-                <option className="bg-zinc-900">Technical Standard Order (TSO)</option>
-                <option className="bg-zinc-900">Other / Full Program Support</option>
+              <select name="certification_goal" className="w-full p-4 bg-white/5 border border-white/10 text-white focus:border-gold outline-none transition-all duration-300 appearance-none cursor-pointer">
+                <option value="New Production Certificate (PC)" className="bg-zinc-900">New Production Certificate (PC)</option>
+                <option value="Experimental Authority (SCoA)" className="bg-zinc-900">Experimental Authority (SCoA)</option>
+                <option value="Parts Manufacturer Approval (PMA)" className="bg-zinc-900">Parts Manufacturer Approval (PMA)</option>
+                <option value="Technical Standard Order (TSO)" className="bg-zinc-900">Technical Standard Order (TSO)</option>
+                <option value="Other / Full Program Support" className="bg-zinc-900">Other / Full Program Support</option>
               </select>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gold">
                 <Shield className="w-4 h-4 opacity-50" />
@@ -115,12 +124,14 @@ export default function ContactForm({ standalone = true }: ContactFormProps) {
           <div className="space-y-3">
             <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 ml-1">Project Details & Mission Scope</label>
             <textarea 
+              name="project_details"
+              required
               className="w-full p-4 bg-white/5 border border-white/10 text-white focus:border-gold outline-none transition-all duration-300 h-32 placeholder:text-white/10 resize-none" 
               placeholder="Brief description of your certification requirements..." 
             />
           </div>
 
-          <button className="w-full py-5 bg-gold text-black font-bold flex items-center justify-center gap-3 hover:bg-white transition-all duration-500 group">
+          <button type="submit" className="w-full py-5 bg-gold text-black font-bold flex items-center justify-center gap-3 hover:bg-white transition-all duration-500 group">
             <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" /> 
             INITIALIZE ASSESSMENT
           </button>

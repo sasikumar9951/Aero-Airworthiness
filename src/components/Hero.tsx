@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import Link from "next/link";
 
 export default function Hero() {
   const containerVariants = {
@@ -65,9 +66,9 @@ export default function Hero() {
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
-            <button className="px-8 py-4 bg-gold text-black font-bold rounded-sm border border-gold hover:bg-white hover:border-white transition-all duration-300">
+            <Link href="/contact" className="px-8 py-4 bg-gold text-black font-bold rounded-sm border border-gold hover:bg-white hover:border-white transition-all duration-300 text-center">
               Request Consultation
-            </button>
+            </Link>
             <button className="px-8 py-4 bg-black/40 text-white font-bold rounded-sm border border-white/20 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
               Start Your Certification Assessment
             </button>

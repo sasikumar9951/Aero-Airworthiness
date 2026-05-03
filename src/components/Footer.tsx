@@ -29,10 +29,10 @@ export default function Footer() {
         <div>
           <h4 className="text-gold font-bold mb-6 text-sm tracking-widest uppercase">Quick Links</h4>
           <ul className="space-y-4 text-sm text-gray-400">
-            <li><a href="#" className="hover:text-gold transition-colors">FAA DAR-F Services</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">STC / TC Approvals</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">PMA Systems</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Experimental Authority</a></li>
+            <li><Link href="/services" className="hover:text-gold transition-colors">FAA DAR-F Services</Link></li>
+            <li><Link href="/services" className="hover:text-gold transition-colors">STC / TC Approvals</Link></li>
+            <li><Link href="/services" className="hover:text-gold transition-colors">PMA Systems</Link></li>
+            <li><Link href="/services" className="hover:text-gold transition-colors">Experimental Authority</Link></li>
           </ul>
         </div>
 
@@ -40,10 +40,10 @@ export default function Footer() {
         <div>
           <h4 className="text-gold font-bold mb-6 text-sm tracking-widest uppercase">Compliance</h4>
           <ul className="space-y-4 text-sm text-gray-400">
-            <li><a href="#" className="hover:text-gold transition-colors">14 CFR §21.137</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">AS9100 Auditing</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Safety Management Systems</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">EASA Coordination</a></li>
+            <li><Link href="/services" className="hover:text-gold transition-colors">14 CFR §21.137</Link></li>
+            <li><Link href="/services" className="hover:text-gold transition-colors">AS9100 Auditing</Link></li>
+            <li><Link href="/services" className="hover:text-gold transition-colors">Safety Management Systems</Link></li>
+            <li><Link href="/services" className="hover:text-gold transition-colors">EASA Coordination</Link></li>
           </ul>
         </div>
 

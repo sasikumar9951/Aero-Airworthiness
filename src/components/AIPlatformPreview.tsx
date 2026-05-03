@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Cpu, Database, Layout, ShieldCheck } from "lucide-react";
+import Link from "next/link";
 
 export default function AIPlatformPreview() {
   return (
@@ -41,9 +42,9 @@ export default function AIPlatformPreview() {
             ))}
           </div>
 
-          <button className="px-8 py-4 bg-transparent border border-gold text-gold font-bold rounded-sm hover:bg-gold hover:text-black transition-all duration-300">
+          <Link href="/ai-platform" className="px-8 py-4 bg-transparent border border-gold text-gold font-bold rounded-sm hover:bg-gold hover:text-black transition-all duration-300 inline-block">
             Explore the Platform
-          </button>
+          </Link>
         </motion.div>
 
         <motion.div

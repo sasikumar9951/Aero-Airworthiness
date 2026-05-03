@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function ClosingStatement() {
   return (
@@ -24,12 +25,12 @@ export default function ClosingStatement() {
             Our certification expertise makes it <span className="text-gold">inevitable.</span>
           </h3>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="px-10 py-5 bg-gold text-black font-bold rounded-sm border border-gold hover:bg-white hover:border-white transition-all duration-300">
+            <Link href="/contact" className="px-10 py-5 bg-gold text-black font-bold rounded-sm border border-gold hover:bg-white hover:border-white transition-all duration-300 inline-block">
               Start Your Certification Assessment
-            </button>
-            <button className="px-10 py-5 bg-transparent text-white font-bold rounded-sm border border-white/20 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+            </Link>
+            <Link href="/ai-platform" className="px-10 py-5 bg-transparent text-white font-bold rounded-sm border border-white/20 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm inline-block">
               Explore the Platform
-            </button>
+            </Link>
           </div>
         </motion.div>
       </div>

@@ -47,9 +47,9 @@ export default function Navbar() {
         </div>
 
         {/* Desktop CTA */}
-        <button className="hidden lg:block px-6 py-2 bg-gold text-black text-sm font-bold rounded-sm hover:bg-white transition-all duration-300">
+        <Link href="/ai-platform" className="hidden lg:block px-6 py-2 bg-gold text-black text-sm font-bold rounded-sm hover:bg-white transition-all duration-300">
           EXPLORE THE PLATFORM
-        </button>
+        </Link>
 
         {/* Mobile Menu Toggle */}
         <button 
@@ -92,12 +92,13 @@ export default function Navbar() {
               transition={{ delay: 0.6 }}
               className="w-full max-w-[300px] mt-4"
             >
-              <button 
-                className="w-full py-4 bg-gold text-black font-bold rounded-sm hover:bg-white transition-all duration-300"
+              <Link 
+                href="/ai-platform"
+                className="w-full py-4 bg-gold text-black font-bold rounded-sm hover:bg-white transition-all duration-300 inline-block text-center"
                 onClick={() => setIsMenuOpen(false)}
               >
                 EXPLORE THE PLATFORM
-              </button>
+              </Link>
             </motion.div>
           </motion.div>
         )}

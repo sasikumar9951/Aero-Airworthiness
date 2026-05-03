@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Award, Briefcase, History } from "lucide-react";
+import Link from "next/link";
 
 export default function Experience() {
   return (
@@ -63,9 +64,9 @@ export default function Experience() {
             <div className="w-12 h-1 bg-gold mb-4" />
             <p className="text-white/50 text-sm uppercase font-bold tracking-widest">Senoir Authority Delegate</p>
           </div>
-          <button className="relative z-10 px-8 py-4 bg-gold text-black font-bold rounded-sm border border-gold hover:bg-white transition-all duration-300 whitespace-nowrap">
+          <Link href="/contact" className="relative z-10 px-8 py-4 bg-gold text-black font-bold rounded-sm border border-gold hover:bg-white transition-all duration-300 whitespace-nowrap text-center">
             Request Consultation
-          </button>
+          </Link>
         </div>
       </div>
     </section>

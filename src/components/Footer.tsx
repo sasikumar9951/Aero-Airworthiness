@@ -53,11 +53,11 @@ export default function Footer() {
           <ul className="space-y-4 text-sm text-gray-400">
             <li className="flex items-center gap-3">
               <Mail className="w-4 h-4 text-gold" />
-              <span>info@aeroairworthiness.com</span>
+              <a href="mailto:info@aeroairworthiness.com" className="hover:text-gold transition-colors">info@aeroairworthiness.com</a>
             </li>
             <li className="flex items-center gap-3">
               <Phone className="w-4 h-4 text-gold" />
-              <span>+1 (336) 370-5825</span>
+              <a href="tel:+13363705825" className="hover:text-gold transition-colors">+1 (336) 370-5825</a>
             </li>
             <li className="flex items-center gap-3">
               <MapPin className="w-4 h-4 text-gold" />

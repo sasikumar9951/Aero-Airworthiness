@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Cpu, Terminal, Database, LineChart, Shield, Zap } from "lucide-react";
+import Link from "next/link";
 import SubPageHero from "@/components/SubPageHero";
 
 export default function AIPlatformPage() {
@@ -57,9 +58,9 @@ export default function AIPlatformPage() {
               <p className="text-white/60 text-xl leading-relaxed mb-10">
                 The traditional paper-based mapping of engineering specs to 14 CFR sections is the single greatest bottleneck in aerospace innovation. Our platform digitizes this process using DAR-F logic.
               </p>
-              <button className="px-10 py-5 bg-gold text-black font-bold flex items-center gap-3 hover:bg-white transition-all">
+              <Link href="/contact" className="px-10 py-5 bg-gold text-black font-bold flex items-center gap-3 hover:bg-white transition-all w-fit">
                  <Terminal className="w-5 h-5" /> Request Developer Access
-              </button>
+              </Link>
            </motion.div>
         </div>
       </section>

@@ -86,7 +86,7 @@ export default function ContactForm({ standalone = true }: ContactFormProps) {
                </div>
                <div>
                  <p className="text-sm font-bold uppercase tracking-widest text-white/30">Direct Multi-Line</p>
-                 <p className="font-serif text-white">+1 (336) 370-5825</p>
+                 <a href="tel:+13363705825" className="font-serif text-white hover:text-gold transition-colors">+1 (336) 370-5825</a>
                </div>
             </div>
           </div>

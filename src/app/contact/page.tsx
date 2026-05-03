@@ -20,8 +20,8 @@ export default function ContactPage() {
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 -mt-32">
             {[
-              { label: "Executive Email", val: "info@aeroairworthiness.com", icon: Mail },
-              { label: "DAR-F Phone", val: "+1 (336) 370-5825", icon: Phone },
+              { label: "Executive Email", val: "info@aeroairworthiness.com", icon: Mail, href: "mailto:info@aeroairworthiness.com" },
+              { label: "DAR-F Phone", val: "+1 (336) 370-5825", icon: Phone, href: "tel:+13363705825" },
               { label: "HQ Operations", val: "North Carolina Greensboro USA", icon: MapPin },
               { label: "Authority Desk", val: "Global Scope", icon: Globe },
             ].map((item, idx) => (
@@ -36,7 +36,13 @@ export default function ContactPage() {
                   <item.icon className="w-6 h-6 text-gold" />
                 </div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/40 mb-3">{item.label}</p>
-                <p className="font-serif text-xl text-white group-hover:text-gold transition-colors">{item.val}</p>
+                {item.href ? (
+                  <a href={item.href} className="font-serif text-xl text-white group-hover:text-gold transition-colors block">
+                    {item.val}
+                  </a>
+                ) : (
+                  <p className="font-serif text-xl text-white group-hover:text-gold transition-colors">{item.val}</p>
+                )}
               </motion.div>
             ))}
           </div>

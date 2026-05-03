@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Shield, Plane, Settings, Zap, ArrowRight, FileText, Globe } from "lucide-react";
+import Link from "next/link";
 import SubPageHero from "@/components/SubPageHero";
 
 export default function ServicesPage() {
@@ -169,9 +170,9 @@ export default function ServicesPage() {
                       ))}
                    </ul>
                    
-                   <button className="flex items-center gap-2 text-gold text-xs font-bold tracking-[0.2em] uppercase group/link border-b border-gold/20 pb-2 hover:border-gold transition-all">
+                   <Link href="/contact" className="flex items-center gap-2 text-gold text-xs font-bold tracking-[0.2em] uppercase group/link border-b border-gold/20 pb-2 hover:border-gold transition-all w-fit">
                         Request Program Briefing <ArrowRight className="w-4 h-4 group-hover/link:translate-x-2 transition-transform" />
-                   </button>
+                   </Link>
                 </div>
               </motion.div>
               
@@ -188,9 +189,9 @@ export default function ServicesPage() {
          <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1464039397811-476f652a3b71?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center grayscale" />
          <div className="relative z-10 max-w-3xl mx-auto">
             <h3 className="text-4xl md:text-6xl font-serif font-bold mb-12">Elite Authority for <span className="text-gold">Elite Programs.</span></h3>
-            <button className="px-12 py-5 bg-gold text-black font-bold hover:bg-white transition-all duration-300">
+            <Link href="/contact" className="px-12 py-5 bg-gold text-black font-bold hover:bg-white transition-all duration-300 inline-block">
                Connect with a Senior Delegate
-            </button>
+            </Link>
          </div>
       </section>
     </main>

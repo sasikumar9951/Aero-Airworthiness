@@ -69,9 +69,9 @@ export default function Hero() {
             <Link href="/contact" className="px-8 py-4 bg-gold text-black font-bold rounded-sm border border-gold hover:bg-white hover:border-white transition-all duration-300 text-center">
               Request Consultation
             </Link>
-            <button className="px-8 py-4 bg-black/40 text-white font-bold rounded-sm border border-white/20 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+            <Link href="/contact" className="px-8 py-4 bg-black/40 text-white font-bold rounded-sm border border-white/20 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm text-center">
               Start Your Certification Assessment
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
 

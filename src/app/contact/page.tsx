@@ -37,11 +37,11 @@ export default function ContactPage() {
                 </div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/40 mb-3">{item.label}</p>
                 {item.href ? (
-                  <a href={item.href} className="font-serif text-xl text-white group-hover:text-gold transition-colors block">
+                  <a href={item.href} className="font-serif text-xl text-white group-hover:text-gold transition-colors block break-all">
                     {item.val}
                   </a>
                 ) : (
-                  <p className="font-serif text-xl text-white group-hover:text-gold transition-colors">{item.val}</p>
+                  <p className="font-serif text-xl text-white group-hover:text-gold transition-colors break-words">{item.val}</p>
                 )}
               </motion.div>
             ))}

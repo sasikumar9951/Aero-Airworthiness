@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, MapPin, Phone, Mail, Shield, CheckCircle } from "lucide-react";
+import { sendEmail } from "@/app/actions";
 
 interface ContactFormProps {
   standalone?: boolean;
@@ -18,25 +19,19 @@ export default function ContactForm({ standalone = true }: ContactFormProps) {
     setSubmitStatus("idle");
 
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
     
     try {
-      const response = await fetch("https://formsubmit.co/ajax/info@aeroairworthiness.com", {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
+      const result = await sendEmail(formData);
 
-      if (response.ok) {
+      if (result.success) {
         setSubmitStatus("success");
         e.currentTarget.reset();
       } else {
+        console.error("Submission Error:", result.error);
         setSubmitStatus("error");
       }
     } catch (error) {
+      console.error("Submission Exception:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);

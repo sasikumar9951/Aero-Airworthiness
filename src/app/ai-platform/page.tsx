@@ -4,8 +4,12 @@ import { motion } from "framer-motion";
 import { Cpu, Terminal, Database, LineChart, Shield, Zap } from "lucide-react";
 import Link from "next/link";
 import SubPageHero from "@/components/SubPageHero";
+import ConformityPortal from "@/components/conformity/ConformityPortal";
+import { useState } from "react";
 
 export default function AIPlatformPage() {
+  const [isPortalOpen, setIsPortalOpen] = useState(false);
+
   return (
     <main className="bg-black text-white min-h-screen">
       <SubPageHero 
@@ -64,6 +68,35 @@ export default function AIPlatformPage() {
            </motion.div>
         </div>
       </section>
+
+      {/* NEW: Conformity Module Integration Section */}
+      <section className="py-24 px-6 md:px-12 lg:px-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gold/[0.02] -z-10" />
+        <div className="max-w-[1200px] mx-auto border border-white/10 bg-zinc-950 p-8 md:p-16 relative group">
+          <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+             <Shield className="w-48 h-48 text-gold" />
+          </div>
+          
+          <div className="relative z-10 max-w-2xl">
+            <h2 className="text-gold font-bold tracking-[0.2em] text-xs uppercase mb-6 flex items-center gap-3">
+              <span className="w-10 h-px bg-gold" /> AI Conformity Module — Scope
+            </h2>
+            <h3 className="text-3xl md:text-5xl font-serif font-bold mb-8">Conformity Command Center</h3>
+            <p className="text-white/60 text-lg leading-relaxed mb-10">
+              Automate FAA Form 8100-1 and 8130-3 package preparation. Our DAR-logic engine runs 40+ smart checks on drawings, test plans, and supplier certifications to ensure first-pass approval.
+            </p>
+            <button 
+              onClick={() => setIsPortalOpen(true)}
+              className="px-10 py-5 bg-gold text-black font-bold flex items-center gap-3 hover:bg-white transition-all w-fit shadow-[0_0_30px_rgba(212,175,55,0.2)]"
+            >
+               <Cpu className="w-5 h-5" /> Launch Portal
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Conformity Portal Overlay */}
+      <ConformityPortal isOpen={isPortalOpen} onClose={() => setIsPortalOpen(false)} />
 
       {/* Futuristic Interactive Terminal Section */}
       <section className="py-24 px-6 md:px-12 lg:px-24 bg-zinc-950 relative overflow-hidden">

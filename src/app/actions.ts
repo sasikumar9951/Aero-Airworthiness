@@ -1,8 +1,16 @@
 "use server";
 
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: Number(process.env.SMTP_PORT),
+  secure: process.env.SMTP_PORT === '465', // true for 465, false for other ports
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
 
 export async function sendEmail(formData: FormData) {
   const name = formData.get('name') as string;
@@ -16,9 +24,10 @@ export async function sendEmail(formData: FormData) {
   }
 
   try {
-    const { data, error } = await resend.emails.send({
-      from: 'Aero Airworthiness <onboarding@resend.dev>',
-      to: ['info@aeroairworthiness.com'],
+    const mailOptions = {
+      from: `"${name}" <${process.env.SMTP_USER}>`, // From user (via authenticated user)
+      to: process.env.CONTACT_EMAIL || 'info@aeroairworthiness.com',
+      replyTo: email,
       subject: `New Certification Assessment: ${company || 'General Inquiry'}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; background-color: #000; color: #fff; padding: 40px; border: 1px solid #c5a059;">
@@ -39,16 +48,13 @@ export async function sendEmail(formData: FormData) {
           </div>
         </div>
       `,
-    });
+    };
 
-    if (error) {
-      console.error("Resend API Error:", error);
-      return { success: false, error: error.message };
-    }
+    await transporter.sendMail(mailOptions);
 
     return { success: true };
   } catch (err: any) {
-    console.error("Server Action Exception:", err);
+    console.error("Nodemailer Error:", err);
     return { success: false, error: err.message || "An unexpected error occurred." };
   }
 }

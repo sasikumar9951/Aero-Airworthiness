@@ -22,7 +22,7 @@ const ConformityPortal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
   const [isFinalized, setIsFinalized] = useState(false);
 
   const updateData = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev: any) => ({ ...prev, [field]: value }));
   };
 
   const handleNext = () => {

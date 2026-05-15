@@ -51,9 +51,12 @@ const FormPreview: React.FC<FormPreviewProps> = ({ data, onApprove, onBack }) =>
         </div>
 
         {/* Extraction Context */}
-        <div className="absolute top-4 left-4 bg-gold/10 border border-gold/20 px-3 py-1 rounded-sm flex items-center gap-2">
-           <div className="w-2 h-2 bg-gold rounded-full animate-pulse" />
-           <span className="text-[8px] font-bold text-gold uppercase tracking-tighter">Data Extracted from FAA 8120-10 & 8130-9</span>
+        <div className="absolute top-4 left-4 bg-gold/10 border border-gold/20 px-3 py-1 rounded-sm flex flex-col gap-0.5">
+           <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-gold rounded-full animate-pulse" />
+              <span className="text-[8px] font-bold text-gold uppercase tracking-tighter">Data Extracted from FAA 8120-10 & 8130-9</span>
+           </div>
+           <span className="text-[6px] text-gold/50 font-mono">AUDIT_ID: DAR-{Math.random().toString(36).substring(2, 10).toUpperCase()} | SIG: {new Date().getTime()}</span>
         </div>
 
         {activeTab === "8100-1" && (

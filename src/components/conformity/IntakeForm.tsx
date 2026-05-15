@@ -34,13 +34,21 @@ const IntakeForm: React.FC<IntakeFormProps> = ({ data, updateData, onNext }) => 
               <field.icon className="w-3 h-3" />
               {field.label}
             </label>
-            <input
-              type="text"
-              value={data[field.id] || ""}
-              onChange={(e) => updateData(field.id, e.target.value)}
-              placeholder={field.placeholder}
-              className="w-full bg-zinc-900/50 border border-white/10 p-4 text-white focus:border-gold outline-none transition-colors rounded-sm font-mono text-sm"
-            />
+            <div className="relative group">
+              <input
+                type="text"
+                value={data[field.id] || ""}
+                onChange={(e) => updateData(field.id, e.target.value)}
+                placeholder={field.placeholder}
+                className="w-full bg-zinc-900/50 border border-white/10 p-4 text-white focus:border-gold outline-none transition-colors rounded-sm font-mono text-sm pr-12"
+              />
+              {data[field.id] && (
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
+                   <div className={`w-2 h-2 rounded-full ${data[field.id].length > 3 ? "bg-green-500" : "bg-yellow-500 animate-pulse"}`} />
+                   <span className="text-[8px] text-white/20 font-bold uppercase hidden group-hover:block">AI-Verified</span>
+                </div>
+              )}
+            </div>
           </div>
         ))}
       </div>

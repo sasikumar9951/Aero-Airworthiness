@@ -19,6 +19,20 @@ const SmartChecks: React.FC<SmartChecksProps> = ({ data, uploadedFiles, onNext, 
     return () => clearTimeout(timer);
   }, []);
 
+  const getReasoning = (id: string, status: string) => {
+    switch (id) {
+      case "pn": return status === "pass" ? `P/N ${data.partNumber} matches engineering drawing block 8.` : "Missing Part Number entry in intake block.";
+      case "sn": return status === "pass" ? `S/N ${data.serialNumber} verified against physical build record.` : "Serial Number not provided; required for 8130-3 Block 10.";
+      case "rev": return status === "pass" ? `Drawing revision matches latest ECO-9941 release.` : "Revision mismatch detected against master data list.";
+      case "rfc": return status === "pass" ? "FAA Form 8120-10 identified and successfully parsed." : "Required RFC (8120-10) missing from evidence queue.";
+      case "soc": return status === "pass" ? "Statement of Conformity (8130-9) validated for applicant signature." : "Missing 8130-9; required per FAA Order 8110.4C.";
+      case "cal": return status === "pass" ? "All inspection tools within valid calibration window." : "NIST traceable evidence missing for critical dimensions.";
+      case "ncr": return status === "pass" ? "All deviations have engineering disposition (Use-As-Is)." : "Open NCRs detected without final MRB approval.";
+      case "der": return status === "pass" ? `Concurrence confirmed with ${data.faaDerContact}.` : "No DAR/FAA representative linked to this project.";
+      default: return "";
+    }
+  };
+
   const checks = [
     { id: "pn", label: "Part Number Mismatch", status: data.partNumber ? "pass" : "fail" },
     { id: "sn", label: "Serial Number Mismatch", status: data.serialNumber ? "pass" : "fail" },
@@ -28,7 +42,7 @@ const SmartChecks: React.FC<SmartChecksProps> = ({ data, uploadedFiles, onNext, 
     { id: "cal", label: "Missing Calibration Evidence", status: uploadedFiles.includes("Calibration records") ? "pass" : "warning" },
     { id: "ncr", label: "NCR Not Dispositioned", status: uploadedFiles.includes("NCRs/deviations") ? "pass" : "warning" },
     { id: "der", label: "Missing DER/FAA Concurrence", status: data.faaDerContact ? "pass" : "fail" },
-  ];
+  ].map(c => ({ ...c, reason: getReasoning(c.id, c.status) }));
 
   if (analyzing) {
     return (
@@ -52,11 +66,14 @@ const SmartChecks: React.FC<SmartChecksProps> = ({ data, uploadedFiles, onNext, 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {checks.map((check) => (
           <div key={check.id} className="p-5 bg-zinc-900/50 border border-white/5 rounded-sm flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              {check.status === "pass" && <CheckCircle2 className="w-5 h-5 text-green-500" />}
-              {check.status === "fail" && <ShieldAlert className="w-5 h-5 text-red-500" />}
-              {check.status === "warning" && <AlertTriangle className="w-5 h-5 text-yellow-500" />}
-              <span className="text-sm font-bold uppercase tracking-wider">{check.label}</span>
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-4">
+                {check.status === "pass" && <CheckCircle2 className="w-5 h-5 text-green-500" />}
+                {check.status === "fail" && <ShieldAlert className="w-5 h-5 text-red-500" />}
+                {check.status === "warning" && <AlertTriangle className="w-5 h-5 text-yellow-500" />}
+                <span className="text-sm font-bold uppercase tracking-wider">{check.label}</span>
+              </div>
+              <p className="text-[9px] text-white/40 ml-9 italic">{check.reason}</p>
             </div>
             <span className={`text-[10px] font-bold uppercase px-2 py-1 rounded-full ${
               check.status === "pass" ? "bg-green-500/10 text-green-500" :

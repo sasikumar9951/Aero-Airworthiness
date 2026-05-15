@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Cpu, Terminal, Database, LineChart, Shield, Zap } from "lucide-react";
 import Link from "next/link";
 import SubPageHero from "@/components/SubPageHero";
@@ -9,6 +9,24 @@ import { useState } from "react";
 
 export default function AIPlatformPage() {
   const [isPortalOpen, setIsPortalOpen] = useState(false);
+  const [hasMembership, setHasMembership] = useState(false);
+  const [showLockAlert, setShowLockAlert] = useState(false);
+
+  const handleLaunchPortal = () => {
+    if (hasMembership) {
+      setIsPortalOpen(true);
+    } else {
+      setShowLockAlert(true);
+      setTimeout(() => setShowLockAlert(false), 3000);
+      // Smooth scroll to pricing
+      document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const simulatePurchase = () => {
+    setHasMembership(true);
+    alert("Membership Activated: All AI Modules Unlocked.");
+  };
 
   return (
     <main className="bg-black text-white min-h-screen">
@@ -86,17 +104,108 @@ export default function AIPlatformPage() {
               Automate FAA Form 8100-1 and 8130-3 package preparation. Our DAR-logic engine runs 40+ smart checks on drawings, test plans, and supplier certifications to ensure first-pass approval.
             </p>
             <button 
-              onClick={() => setIsPortalOpen(true)}
-              className="px-10 py-5 bg-gold text-black font-bold flex items-center gap-3 hover:bg-white transition-all w-fit shadow-[0_0_30px_rgba(212,175,55,0.2)]"
+              onClick={handleLaunchPortal}
+              className={`px-10 py-5 font-bold flex items-center gap-3 transition-all w-fit shadow-[0_0_30px_rgba(212,175,55,0.2)] ${
+                hasMembership ? "bg-gold text-black hover:bg-white" : "bg-white/10 text-white/40 border border-white/10"
+              }`}
             >
-               <Cpu className="w-5 h-5" /> Launch Portal
+               {hasMembership ? <Cpu className="w-5 h-5" /> : <Shield className="w-5 h-5 opacity-50" />}
+               {hasMembership ? "Launch Portal" : "Membership Required"}
             </button>
+            
+            <AnimatePresence>
+              {showLockAlert && (
+                <motion.p 
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="mt-4 text-gold font-bold text-xs flex items-center gap-2"
+                >
+                  <Shield className="w-4 h-4" /> Please select a membership plan below to unlock.
+                </motion.p>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </section>
 
       {/* Conformity Portal Overlay */}
       <ConformityPortal isOpen={isPortalOpen} onClose={() => setIsPortalOpen(false)} />
+
+      {/* NEW: Membership & Pricing Section */}
+      <section id="pricing" className="py-32 px-6 md:px-12 lg:px-24 bg-black border-t border-white/5">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-gold font-bold tracking-[0.2em] text-xs uppercase mb-6">MEMBERSHIP ACCESS</h2>
+            <h3 className="text-4xl md:text-6xl font-serif font-bold mb-8">Choose Your Tier.</h3>
+            <p className="text-white/40 max-w-2xl mx-auto text-lg">
+              Unlock the full power of the Conformity Command Center. Scale your certification efforts with AI-driven compliance infrastructure.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Professional",
+                price: "$499",
+                period: "per month",
+                features: ["5 Conformity Packages / mo", "Basic Smart Checks", "8100-1 & 8130-3 Drafts", "Standard Support"],
+                cta: "Start Pro Access",
+                highlight: false
+              },
+              {
+                name: "Enterprise",
+                price: "$1,499",
+                period: "per month",
+                features: ["Unlimited Packages", "Advanced Predictive Audit", "Full DAR-F Integration", "Priority 24/7 Support", "API Access"],
+                cta: "Go Enterprise",
+                highlight: true
+              },
+              {
+                name: "Custom / DAR",
+                price: "Contact",
+                period: "for pricing",
+                features: ["White-label Portal", "Custom Logic Injection", "On-site Training", "Dedicated Compliance Lead"],
+                cta: "Contact Sales",
+                highlight: false
+              }
+            ].map((tier, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                className={`p-10 border rounded-sm flex flex-col justify-between ${
+                  tier.highlight ? "bg-gold/5 border-gold shadow-[0_0_50px_rgba(212,175,55,0.1)]" : "bg-zinc-950 border-white/10"
+                }`}
+              >
+                <div>
+                  <h4 className="text-xl font-serif font-bold mb-2">{tier.name}</h4>
+                  <div className="mb-8">
+                    <span className="text-4xl font-bold">{tier.price}</span>
+                    <span className="text-white/40 text-sm ml-2">{tier.period}</span>
+                  </div>
+                  <ul className="space-y-4 mb-10">
+                    {tier.features.map((f, i) => (
+                      <li key={i} className="flex items-center gap-3 text-sm text-white/60">
+                        <Zap className="w-4 h-4 text-gold" /> {f}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <button 
+                  onClick={simulatePurchase}
+                  className={`py-4 text-center font-bold uppercase tracking-widest text-xs transition-all ${
+                    tier.highlight ? "bg-gold text-black hover:bg-white" : "border border-white/10 hover:border-gold hover:text-gold"
+                  }`}
+                >
+                  {tier.cta}
+                </button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Futuristic Interactive Terminal Section */}
       <section className="py-24 px-6 md:px-12 lg:px-24 bg-zinc-950 relative overflow-hidden">

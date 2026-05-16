@@ -61,123 +61,238 @@ const FormPreview: React.FC<FormPreviewProps> = ({ data, onApprove, onBack }) =>
 
         {activeTab === "8100-1" && (
           <div className="space-y-6 text-[11px]">
-            {/* ... 8100-1 content ... */}
-            <div className="flex justify-between border-b-2 border-black pb-4">
-              <div className="font-bold">
-                <p>U.S. DEPARTMENT OF TRANSPORTATION</p>
-                <p className="text-sm">FEDERAL AVIATION ADMINISTRATION</p>
+            <div className="border-2 border-black text-[9px] font-sans">
+              <div className="flex border-b border-black">
+                <div className="w-1/3 p-2 text-center flex flex-col justify-center items-center font-bold text-sm">
+                  Conformity Inspection Record
+                </div>
+                <div className="w-1/3 border-l border-black p-1">
+                  <p className="font-bold text-[7px] leading-tight">1. Project Number, TIA/Request Date, RFC Tracking No<br/> Rev. Original. Dated:</p>
+                  <p className="mt-1">{data.projectNumber || "TBD"}; {data.requestDate || "TBD"}; {data.rfcNumber || "TBD"}; {data.drawingRev?.split("/")[1] || "Original"}; {data.inspectionDate || "TBD"}</p>
+                </div>
+                <div className="w-1/3 border-l border-black p-1 font-bold flex items-center justify-center">
+                  2. SHEET 1 OF 2 Sheets
+                </div>
               </div>
-              <div className="text-right font-bold">
-                <p>CONFORMITY INSPECTION RECORD</p>
-                <p>FAA Form 8100-1</p>
+              <div className="flex border-b border-black">
+                <div className="w-1/2 p-1 border-r border-black">
+                  <p className="font-bold text-[7px]">3. Applicant/Manufacturer:</p>
+                  <p>{data.applicantManufacturer || "TBD"}<br/>{data.applicantAddress || "TBD"}</p>
+                </div>
+                <div className="w-1/4 p-1 border-r border-black">
+                  <p className="font-bold text-[7px]">4. Beginning Date:</p>
+                  <p>{data.beginningDate || "TBD"}</p>
+                </div>
+                <div className="w-1/4 p-1">
+                  <p className="font-bold text-[7px]">5. Ending Date:</p>
+                  <p>{data.endingDate || "TBD"}</p>
+                </div>
               </div>
-            </div>
-
-            <div className="grid grid-cols-3 gap-4 border-b border-black pb-4">
-              <div>
-                <p className="font-bold uppercase text-[8px]">1. Project Number</p>
-                <p className="font-mono mt-1">{data.rfcNumber || "TBD"}</p>
+              <div className="flex border-b border-black">
+                <div className="w-1/2 p-1 border-r border-black">
+                  <p className="font-bold text-[7px]">6. Model:</p>
+                  <p>{data.makeModelSeries || "TBD"}</p>
+                </div>
+                <div className="w-1/2 p-1">
+                  <p className="font-bold text-[7px]">7. Inspected By:</p>
+                  <p>{data.faaDerContact || "TBD"} Designee No. {data.designeeNo || "TBD"}</p>
+                </div>
               </div>
-              <div>
-                <p className="font-bold uppercase text-[8px]">3. Applicant / Manufacturer</p>
-                <p className="font-mono mt-1">{data.projectName || "TBD"}</p>
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-black">
+                    <th className="border-r border-black p-1 font-bold text-[7px] w-8">8. Item No.</th>
+                    <th className="border-r border-black p-1 font-bold text-[7px] w-48">9. Nomenclature of Item Inspected</th>
+                    <th className="border-r border-black p-1 font-bold text-[7px] w-48">10. Drawing, Document, Specification, etc.</th>
+                    <th className="border-r border-black p-1 font-bold text-[7px] w-20">11. Revision and Date</th>
+                    <th className="border-r border-black p-1 font-bold text-[7px] w-24">
+                      12. No. of Items Determined
+                      <div className="flex justify-between mt-1 border-t border-black pt-1">
+                        <span className="w-1/2 text-center border-r border-black">SAT.</span>
+                        <span className="w-1/2 text-center">UNSAT.</span>
+                      </div>
+                    </th>
+                    <th className="p-1 font-bold text-[7px]">13. Comments</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border-r border-black p-1 text-center align-top">1</td>
+                    <td className="border-r border-black p-1 align-top">{data.aircraftProduct || "Statement of Conformity"}</td>
+                    <td className="border-r border-black p-1 align-top text-center">FAA Form 8130-9</td>
+                    <td className="border-r border-black p-1 align-top text-center">07/25</td>
+                    <td className="border-r border-black p-0 align-top">
+                      <div className="flex h-full min-h-[30px]">
+                         <div className="w-1/2 text-center border-r border-black p-1">1</div>
+                         <div className="w-1/2 text-center p-1"></div>
+                      </div>
+                    </td>
+                    <td className="p-1 align-top text-[7px]">
+                      Received signed 8130-9 dated {data.beginningDate || "03/10/2026"}, signed by Authorized Agent. Reviewed for accuracy, completeness. Original Attached.
+                    </td>
+                  </tr>
+                  <tr className="border-t border-black">
+                    <td className="border-r border-black p-1 text-center align-top">2</td>
+                    <td className="border-r border-black p-1 align-top">Statement of Compliance with the Airworthiness Standards Design Data<br/>{data.partNumber}</td>
+                    <td className="border-r border-black p-1 align-top text-center">{data.partNumber}</td>
+                    <td className="border-r border-black p-1 align-top text-center">{data.drawingRev}</td>
+                    <td className="border-r border-black p-0 align-top">
+                      <div className="flex h-full min-h-[30px]">
+                         <div className="w-1/2 text-center border-r border-black p-1">{data.quantity || 1}</div>
+                         <div className="w-1/2 text-center p-1"></div>
+                      </div>
+                    </td>
+                    <td className="p-1 align-top text-[7px]">
+                      Drawings, Parts List & EO have been FAA DER approved for the purpose of FAA Conformity Inspection.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div className="border-t border-black p-1 flex justify-between text-[6px]">
+                 <span>FAA Form 8100-1 (8-19) Supersedes Previous Edition</span>
+                 <span>Electronic version page 1</span>
               </div>
-              <div>
-                <p className="font-bold uppercase text-[8px]">6. Model</p>
-                <p className="font-mono mt-1">{data.aircraftProduct || "TBD"}</p>
-              </div>
-            </div>
-
-            <table className="w-full border-collapse border border-black">
-              <thead>
-                <tr className="bg-gray-100 uppercase text-[8px]">
-                  <th className="border border-black p-2 w-12">Item No.</th>
-                  <th className="border border-black p-2">Nomenclature of Item</th>
-                  <th className="border border-black p-2">Drawing / Specification</th>
-                  <th className="border border-black p-2 w-12">Rev.</th>
-                  <th className="border border-black p-2 w-20">Status</th>
-                </tr>
-              </thead>
-              <tbody className="font-mono">
-                <tr>
-                  <td className="border border-black p-3 text-center">001</td>
-                  <td className="border border-black p-3">{data.partNumber || "Aero Component"}</td>
-                  <td className="border border-black p-3">{data.drawingRev?.split("/")[0] || "DWG-1001"}</td>
-                  <td className="border border-black p-3 text-center">{data.drawingRev?.split("/")[1] || "A"}</td>
-                  <td className="border border-black p-3 text-center font-bold">SAT</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div className="mt-20 pt-10 border-t border-black grid grid-cols-2 gap-20">
-               <div>
-                  <p className="font-bold uppercase text-[8px]">Inspected By (Authorized Designee)</p>
-                  <div className="h-10 border-b border-black flex items-end">
-                     <span className="italic text-gray-400">Electronic Draft - Review Required</span>
-                  </div>
-                  <p className="mt-1">{data.faaDerContact || "Pending Assignment"}</p>
-               </div>
-               <div>
-                  <p className="font-bold uppercase text-[8px]">Date</p>
-                  <div className="h-10 border-b border-black flex items-end">
-                     <span>{new Date().toLocaleDateString()}</span>
-                  </div>
-               </div>
             </div>
           </div>
         )}
 
         {activeTab === "8130-3" && (
           <div className="space-y-6 text-[11px]">
-             <div className="flex justify-between border-2 border-black p-4">
-                <div className="text-center w-full">
-                   <p className="font-bold text-sm">AUTHORIZED RELEASE CERTIFICATE / FAA FORM 8130-3</p>
-                   <p className="font-bold">AIRWORTHINESS APPROVAL TAG</p>
+            <div className="border-2 border-black text-[9px] font-sans">
+              <div className="flex border-b border-black h-16">
+                <div className="w-1/4 border-r border-black p-1 text-center flex flex-col justify-between">
+                  <p className="font-bold text-[7px] text-left">1. Approving Civil Aviation Authority/Country:</p>
+                  <p className="font-bold">FAA/UNITED STATES</p>
+                  <div/>
                 </div>
-             </div>
-
-             <div className="grid grid-cols-2 border border-black divide-x divide-black">
-                <div className="p-4 space-y-4">
-                   <div>
-                      <p className="font-bold uppercase text-[8px]">1. Approving Civil Aviation Authority/Country</p>
-                      <p className="font-bold">FAA / UNITED STATES</p>
-                   </div>
-                   <div>
-                      <p className="font-bold uppercase text-[8px]">4. Organization Name and Address</p>
-                      <p className="font-mono">AERO AIRWORTHINESS<br />WICHITA, KS, USA</p>
-                   </div>
-                   <div>
-                      <p className="font-bold uppercase text-[8px]">7. Description</p>
-                      <p className="font-mono">{data.aircraftProduct || "Aerospace Article"}</p>
-                   </div>
+                <div className="w-1/2 border-r border-black p-1 flex flex-col items-center justify-center">
+                  <p className="font-bold text-lg">AUTHORIZED RELEASE CERTIFICATE</p>
+                  <p className="font-bold text-[7px]">FAA Form 8130-3, AIRWORTHINESS APPROVAL TAG</p>
                 </div>
-                <div className="p-4 space-y-4">
-                   <div>
-                      <p className="font-bold uppercase text-[8px]">3. Form Tracking Number</p>
-                      <p className="font-mono">AC-884-2921-X</p>
-                   </div>
-                   <div>
-                      <p className="font-bold uppercase text-[8px]">8. Part Number</p>
-                      <p className="font-mono font-bold text-sm">{data.partNumber || "P/N-PENDING"}</p>
-                   </div>
-                   <div>
-                      <p className="font-bold uppercase text-[8px]">11. Work Order / Contract / Invoice</p>
-                      <p className="font-mono">{data.workOrderPo || "W/O-991"}</p>
-                   </div>
+                <div className="w-1/4 p-1">
+                  <p className="font-bold text-[7px]">3. Form Tracking Number:</p>
+                  <p className="text-center font-bold mt-2">{data.rfcNumber || "25-01361-HJ2"}</p>
                 </div>
-             </div>
+              </div>
 
-             <div className="p-4 border border-black">
-                <p className="font-bold uppercase text-[8px] mb-2">12. Status / Work</p>
-                <p className="font-mono italic">
-                   New article conformity inspection performed in accordance with FAA Order 8110.4C. 
-                   Item conforms to approved data listed in Block 9. Ready for installation on {data.aircraftProduct}.
-                </p>
-             </div>
+              <div className="flex border-b border-black min-h-[40px]">
+                <div className="w-3/4 border-r border-black p-1">
+                  <p className="font-bold text-[7px]">4. Organization Name and Address:</p>
+                  <p>Applicant: {data.applicantManufacturer || "Honda Aircraft Company"}</p>
+                  <p>{data.applicantAddress || "6430 Ballinger Rd. Greensboro, NC 27410"}</p>
+                </div>
+                <div className="w-1/4 p-1">
+                  <p className="font-bold text-[7px]">5. Work Order/Contract/Invoice Number:</p>
+                  <p>{data.workOrderPo || "3QHJ25-001"}</p>
+                </div>
+              </div>
 
-             <div className="mt-20 p-4 bg-gray-50 border border-dashed border-black flex items-center justify-center">
-                <p className="text-[10px] font-bold text-center uppercase">PRE-FILLED DRAFT DATA ONLY - NOT FOR OFFICIAL ISSUANCE</p>
-             </div>
+              <table className="w-full text-left border-collapse border-b border-black">
+                <thead>
+                  <tr className="border-b border-black">
+                    <th className="border-r border-black p-1 font-bold text-[7px] w-8">6. Item:</th>
+                    <th className="border-r border-black p-1 font-bold text-[7px] w-48">7. Description:</th>
+                    <th className="border-r border-black p-1 font-bold text-[7px] w-32">8. Part Number:</th>
+                    <th className="border-r border-black p-1 font-bold text-[7px] w-16">9. Quantity:</th>
+                    <th className="border-r border-black p-1 font-bold text-[7px] w-32">10. Serial Number:</th>
+                    <th className="p-1 font-bold text-[7px]">11. Status/Work:</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border-r border-black p-1 text-center align-top">1</td>
+                    <td className="border-r border-black p-1 align-top">{data.aircraftProduct || "LEFT CABIN POWER ELECTRICAL HARNESS ASSEMBLY"}</td>
+                    <td className="border-r border-black p-1 text-center align-top">{data.partNumber || "HJ2-E9113-201-001"}</td>
+                    <td className="border-r border-black p-1 text-center align-top">{data.quantity || 3}</td>
+                    <td className="border-r border-black p-1 text-center align-top">{data.serialNumber || "0001,0002 and 0003"}</td>
+                    <td className="p-1 text-center align-top">{data.testArticleStatus || "Prototype"}</td>
+                  </tr>
+                  <tr>
+                     <td colSpan={6} className="h-4"></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div className="border-b border-black p-1 min-h-[160px]">
+                <p className="font-bold text-[7px]">12. Remarks:</p>
+                <div className="mt-1 text-[7px] leading-tight space-y-1">
+                  <p>Conformity Inspection: Conformity Inspection for FAA Project {data.projectNumber}.</p>
+                  <p>1- Part (ASSY) conformity as Listed on RFC FAA Form 8120-10, tracking number: {data.rfcNumber}, Rev. Original, dated: {data.requestDate}.</p>
+                  <p>2- Signed FAA 8130-9 Statement of conformity by Applicant Authorized Agent, dated {data.beginningDate} was provided, no deviation has been listed, reviewed for accuracy and completeness.</p>
+                  <p>3- Part Numbers: {data.partNumber}, {data.aircraftProduct} is inspected to engineering drawing {data.drawingRev}.</p>
+                  <p>4- RFC 8120-10 Special Instructions are complied with: Current or Later FAA-Approved Revision is Acceptable; Items will be used for Test articles.</p>
+                  <p>5- Performed remote conformity IAW with RFC item 6 and OMS Remote Conformity Inspection.</p>
+                  <div className="text-center font-bold mt-4">
+                    <p>DMS Control Number #{data.designeeNo || "408993273"}-2026-0022</p>
+                    <p>****************************************************** END ******************************************************</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex border-b border-black">
+                <div className="w-1/2 border-r border-black p-1 bg-gray-100 flex flex-col justify-between">
+                  <div>
+                    <p className="font-bold text-[7px]">13a. Certifies the items identified above were manufactured in conformity to:</p>
+                    <div className="mt-2 text-[7px] ml-4 space-y-1">
+                      <div className="flex items-center gap-2"><div className="w-3 h-3 border border-black bg-white"></div> <span>Approved design data and are in a condition for safe operation.</span></div>
+                      <div className="flex items-center gap-2"><div className="w-3 h-3 border border-black flex items-center justify-center font-bold bg-white">X</div> <span>Non-approved design data specified in Block 12.</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-1/2 p-1 flex flex-col">
+                   <div className="flex items-center gap-4 text-[7px] font-bold">
+                      <div className="flex items-center gap-1">14a. <div className="w-3 h-3 border border-black"></div> 14 CFR 43.9 Return to Service</div>
+                      <div className="flex items-center gap-1"><div className="w-3 h-3 border border-black"></div> Other regulation specified in Block 12</div>
+                   </div>
+                   <p className="text-[6px] mt-2 leading-tight">Certifies that unless otherwise specified in block 12, the work identified in Block 11 and described in Block 12 was accomplished in accordance with Title 14, Code of Federal Regulations, part 43 and in respect to that work, the items are approved for return to service.</p>
+                </div>
+              </div>
+
+              <div className="flex border-b border-black">
+                <div className="w-1/4 border-r border-black p-1 h-12">
+                  <p className="font-bold text-[7px]">13b. Authorized Signature:</p>
+                </div>
+                <div className="w-1/4 border-r border-black p-1 h-12">
+                  <p className="font-bold text-[7px]">13c. Approval/Authorization No.:</p>
+                  <p className="text-center font-bold mt-2">{data.designeeNo || "408993273"}</p>
+                </div>
+                <div className="w-1/4 border-r border-black p-1 h-12 bg-gray-100">
+                  <p className="font-bold text-[7px]">14b. Authorized Signature:</p>
+                </div>
+                <div className="w-1/4 p-1 h-12 bg-gray-100">
+                  <p className="font-bold text-[7px]">14c. Approval/Certificate No.:</p>
+                </div>
+              </div>
+
+              <div className="flex border-b border-black">
+                <div className="w-1/4 border-r border-black p-1 h-10 flex flex-col justify-between">
+                  <p className="font-bold text-[7px]">13d. Name (Typed or Printed):</p>
+                  <p className="text-center font-bold">{data.faaDerContact || "Mohammed El Imadi"}</p>
+                </div>
+                <div className="w-1/4 border-r border-black p-1 h-10 flex flex-col justify-between">
+                  <p className="font-bold text-[7px]">13e. Date (dd/mmm/yyyy):</p>
+                  <p className="text-center font-bold">{data.inspectionDate || "17 /Mar /2026"}</p>
+                </div>
+                <div className="w-1/4 border-r border-black p-1 h-10 bg-gray-100">
+                  <p className="font-bold text-[7px]">14d. Name (Typed or Printed):</p>
+                </div>
+                <div className="w-1/4 p-1 h-10 bg-gray-100">
+                  <p className="font-bold text-[7px]">14e. Date (dd/mmm/yyyy):</p>
+                </div>
+              </div>
+
+              <div className="p-1">
+                 <p className="text-center font-bold text-[8px]">User/Installer Responsibilities</p>
+                 <p className="text-[6px] font-bold mt-1 leading-tight">It is important to understand that the existence of this document alone does not automatically constitute authority to install the aircraft engine/propeller/article.</p>
+                 <p className="text-[6px] font-bold mt-1 leading-tight">Where the user/installer performs work in accordance with the national regulations of an airworthiness authority different than the airworthiness authority of the country specified in Block 1, it is essential that the user/installer ensures that his/her airworthiness authority accepts aircraft engine(s)/propeller(s)/article(s) from the airworthiness authority of the country specified in Block 1.</p>
+                 <p className="text-[6px] font-bold mt-1 leading-tight">Statements in Blocks 13a and 14a do not constitute installation certification. In all cases, aircraft maintenance records must contain an installation certification issued in accordance with the national regulations by the user/installer before the aircraft may be flown.</p>
+              </div>
+              
+              <div className="border-t border-black p-1 flex justify-between text-[6px]">
+                 <span>FAA Form 8130-3 (02-14)</span>
+                 <span>NSN: 0052-00-012-9005</span>
+              </div>
+            </div>
           </div>
         )}
 

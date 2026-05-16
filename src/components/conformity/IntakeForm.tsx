@@ -8,9 +8,10 @@ interface IntakeFormProps {
   data: any;
   updateData: (field: string, value: string) => void;
   onNext: () => void;
+  onBack?: () => void;
 }
 
-const IntakeForm: React.FC<IntakeFormProps> = ({ data, updateData, onNext }) => {
+const IntakeForm: React.FC<IntakeFormProps> = ({ data, updateData, onNext, onBack }) => {
   const fields = [
     { id: "projectName", label: "Project Name", icon: ClipboardList, placeholder: "e.g., Project Skyhawk Upgrade" },
     { id: "applicantManufacturer", label: "Applicant / Manufacturer", icon: User, placeholder: "e.g., Aero Dynamics Inc." },
@@ -95,12 +96,20 @@ const IntakeForm: React.FC<IntakeFormProps> = ({ data, updateData, onNext }) => 
         ))}
       </div>
 
-      <div className="pt-8 border-t border-white/10 flex justify-end">
+      <div className={`pt-8 border-t border-white/10 flex ${onBack ? 'justify-between' : 'justify-end'}`}>
+        {onBack && (
+          <button
+            onClick={onBack}
+            className="px-10 py-4 border border-white/10 text-white font-bold uppercase tracking-widest hover:bg-white/5 transition-all text-sm"
+          >
+            Back to Analysis
+          </button>
+        )}
         <button
           onClick={onNext}
           className="px-10 py-4 bg-gold text-black font-bold uppercase tracking-widest hover:bg-white transition-all text-sm"
         >
-          Continue to Uploads
+          Proceed to Form Generation
         </button>
       </div>
     </div>

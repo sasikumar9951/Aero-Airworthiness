@@ -8,7 +8,7 @@ interface DocumentUploadProps {
   uploadedFiles: string[];
   setUploadedFiles: (files: string[]) => void;
   onNext: () => void;
-  onBack: () => void;
+  onBack?: () => void;
 }
 
 const DocumentUpload: React.FC<DocumentUploadProps> = ({ uploadedFiles, setUploadedFiles, onNext, onBack }) => {
@@ -118,13 +118,15 @@ const DocumentUpload: React.FC<DocumentUploadProps> = ({ uploadedFiles, setUploa
         </div>
       </div>
 
-      <div className="pt-8 border-t border-white/10 flex justify-between">
-        <button
-          onClick={onBack}
-          className="px-10 py-4 border border-white/10 text-white font-bold uppercase tracking-widest hover:bg-white/5 transition-all text-sm"
-        >
-          Back
-        </button>
+      <div className={`pt-8 border-t border-white/10 flex ${onBack ? 'justify-between' : 'justify-end'}`}>
+        {onBack && (
+          <button
+            onClick={onBack}
+            className="px-10 py-4 border border-white/10 text-white font-bold uppercase tracking-widest hover:bg-white/5 transition-all text-sm"
+          >
+            Back
+          </button>
+        )}
         <button
           onClick={onNext}
           disabled={uploadedFiles.length === 0}

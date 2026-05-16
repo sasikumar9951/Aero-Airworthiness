@@ -6,16 +6,38 @@ import { ShieldAlert, CheckCircle2, AlertTriangle, Search, Lock, Database, Layou
 
 interface SmartChecksProps {
   data: any;
+  updateData: (field: string, value: string) => void;
   uploadedFiles: string[];
   onNext: () => void;
   onBack: () => void;
 }
 
-const SmartChecks: React.FC<SmartChecksProps> = ({ data, uploadedFiles, onNext, onBack }) => {
+const SmartChecks: React.FC<SmartChecksProps> = ({ data, updateData, uploadedFiles, onNext, onBack }) => {
   const [analyzing, setAnalyzing] = useState(true);
   
   useEffect(() => {
-    const timer = setTimeout(() => setAnalyzing(false), 2500);
+    const timer = setTimeout(() => {
+      setAnalyzing(false);
+      // Simulate AI Extraction by auto-populating if empty
+      if (!data.projectName) updateData("projectName", "Honda Aircraft Upgrade");
+      if (!data.applicantManufacturer) updateData("applicantManufacturer", "Honda Aircraft Company");
+      if (!data.applicantAddress) updateData("applicantAddress", "6430 Ballinger Rd. Greensboro, NC 27410");
+      if (!data.aircraftProduct) updateData("aircraftProduct", "LEFT CABIN POWER ELECTRICAL HARNESS ASSEMBLY");
+      if (!data.partNumber) updateData("partNumber", "HJ2-E9113-201-001");
+      if (!data.serialNumber) updateData("serialNumber", "0001, 0002, 0003");
+      if (!data.quantity) updateData("quantity", "3");
+      if (!data.drawingRev) updateData("drawingRev", "Rev -2");
+      if (!data.rfcNumber) updateData("rfcNumber", "AT16090AT-A-25-01361");
+      if (!data.projectNumber) updateData("projectNumber", "AT16090AT-A");
+      if (!data.workOrderPo) updateData("workOrderPo", "3QHJ25-001");
+      if (!data.requestDate) updateData("requestDate", "2025-05-08");
+      if (!data.beginningDate) updateData("beginningDate", "2026-03-10");
+      if (!data.endingDate) updateData("endingDate", "2026-03-17");
+      if (!data.inspectionDate) updateData("inspectionDate", "2026-03-17");
+      if (!data.faaDerContact) updateData("faaDerContact", "Mohammed El Imadi");
+      if (!data.designeeNo) updateData("designeeNo", "408993273");
+      if (!data.testArticleStatus) updateData("testArticleStatus", "Prototype");
+    }, 2500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -226,7 +248,7 @@ const SmartChecks: React.FC<SmartChecksProps> = ({ data, uploadedFiles, onNext, 
           onClick={onNext}
           className="px-10 py-4 bg-gold text-black font-bold uppercase tracking-widest hover:bg-white transition-all text-sm"
         >
-          Generate Draft Forms
+          Verify Extracted Data
         </button>
       </div>
     </div>

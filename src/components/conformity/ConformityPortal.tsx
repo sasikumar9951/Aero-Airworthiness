@@ -9,9 +9,9 @@ import SmartChecks from "./SmartChecks";
 import FormPreview from "./FormPreview";
 
 const steps = [
-  { id: "intake", label: "Client Intake", icon: ClipboardList },
   { id: "upload", label: "Evidence Upload", icon: Activity },
-  { id: "analysis", label: "Smart Analysis", icon: ShieldAlert },
+  { id: "analysis", label: "AI Extraction", icon: ShieldAlert },
+  { id: "verify", label: "Data Verification", icon: ClipboardList },
   { id: "review", label: "DAR Review", icon: FileCheck },
 ];
 
@@ -137,9 +137,9 @@ const ConformityPortal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                {currentStep === 0 && <IntakeForm data={formData} updateData={updateData} onNext={handleNext} />}
-                {currentStep === 1 && <DocumentUpload uploadedFiles={uploadedFiles} setUploadedFiles={setUploadedFiles} onNext={handleNext} onBack={handleBack} />}
-                {currentStep === 2 && <SmartChecks data={formData} uploadedFiles={uploadedFiles} onNext={handleNext} onBack={handleBack} />}
+                {currentStep === 0 && <DocumentUpload uploadedFiles={uploadedFiles} setUploadedFiles={setUploadedFiles} onNext={handleNext} />}
+                {currentStep === 1 && <SmartChecks data={formData} updateData={updateData} uploadedFiles={uploadedFiles} onNext={handleNext} onBack={handleBack} />}
+                {currentStep === 2 && <IntakeForm data={formData} updateData={updateData} onNext={handleNext} onBack={handleBack} />}
                 {currentStep === 3 && <FormPreview data={formData} onApprove={handleFinalApprove} onBack={handleBack} />}
               </motion.div>
             </AnimatePresence>

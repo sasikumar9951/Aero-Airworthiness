@@ -384,7 +384,7 @@ const FormPreview: React.FC<FormPreviewProps> = ({ data, onApprove, onBack }) =>
              </div>
 
              <div className="space-y-4">
-                <p><span className="font-bold">TO:</span> FAA / MIDO-Wichita</p>
+                <p><span className="font-bold">TO:</span> FAA / FAA-CMS-Wichita</p>
                 <p><span className="font-bold">FROM:</span> Certification Department</p>
                 <p><span className="font-bold">SUBJECT:</span> Summary of Conformity for {data.projectName}</p>
                 

@@ -64,8 +64,8 @@ export default function ContactForm({ standalone = true }: ContactFormProps) {
             </p>
             <ul className="space-y-1 text-base text-white/70">
               <li>TIA • TC • PC • STC</li>
-              <li>Experimental (R&D • Show Comp • Market Survey • Crew Training) • SCoA</li>
-              <li>MRA • Export</li>
+              <li>Experimental (R&D • Show Comp • Market Survey • Crew Training • Exhibition) • SCoA</li>
+              <li>Export Certification</li>
               <li>PMA • 14 CFR §21.137</li>
               <li>Conformity • Flight Test • Certification Execution</li>
               <li>eVTOL/eCTOL • Advanced Air Mobility</li>

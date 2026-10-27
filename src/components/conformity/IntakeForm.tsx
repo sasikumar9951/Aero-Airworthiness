@@ -30,7 +30,7 @@ const IntakeForm: React.FC<IntakeFormProps> = ({ data, updateData, onNext, onBac
     { id: "requestDate", label: "TIA/Request Date", icon: Calendar, placeholder: "e.g., 2024-12-01", type: "date" },
     { id: "beginningDate", label: "Beginning Date", icon: Calendar, placeholder: "e.g., 2024-12-01", type: "date" },
     { id: "endingDate", label: "Ending Date", icon: Calendar, placeholder: "e.g., 2024-12-01", type: "date" },
-    { id: "faaOffice", label: "FAA Office / CMS / MIDO", icon: MapPin, placeholder: "e.g., MIDO-41 Wichita" },
+    { id: "faaOffice", label: "FAA Office / FAA-CMS", icon: MapPin, placeholder: "e.g., FAA-CMS-41 Wichita" },
     { id: "faaDerContact", label: "Inspected By (Name)", icon: User, placeholder: "e.g., Mohammed El Imadi" },
     { id: "designeeNo", label: "Designee No.", icon: Hash, placeholder: "e.g., 408993273" },
     { 

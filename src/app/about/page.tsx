@@ -21,9 +21,9 @@ export default function AboutPage() {
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div className="relative aspect-[4/5] md:aspect-video lg:aspect-[4/5] overflow-hidden border border-white/10 rounded-sm">
             <img
-              src="/founder-portrait.png"
-              alt="Sasikumar - Founder and Lead FAA Delegate"
-              className="w-full h-full object-cover object-top contrast-110 brightness-90 transition-all duration-700 hover:scale-105"
+              src="/authority-handshake.png"
+              alt="Aero Airworthiness - Authority and Trusted Relationships"
+              className="w-full h-full object-cover object-center contrast-110 brightness-90 transition-all duration-700 hover:scale-105"
             />
             <div className="absolute inset-0 bg-gold/5 mix-blend-multiply" />
             <div className="absolute top-12 left-12">

@@ -89,8 +89,8 @@ export default function Hero() {
             <ul className="space-y-4">
               {[
                 "TIA • TC • PC • STC",
-                "Experimental (R&D • Show Comp • Market Survey • Crew Training) • SCoA",
-                "MRA • Export",
+                "Experimental (R&D • Show Comp • Market Survey • Crew Training • Exhibition) • SCoA",
+                "Export Certification",
                 "PMA • 14 CFR §21.137",
                 "Conformity • Flight Test • Certification Execution",
                 "eVTOL/eCTOL • Advanced Air Mobility"

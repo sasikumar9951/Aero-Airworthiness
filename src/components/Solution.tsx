@@ -57,7 +57,7 @@ export default function Solution() {
                 },
                 {
                   title: "Proven Certification Leadership",
-                  desc: "30+ years of airworthiness authority across experimental, standard certification, and production-level programs."
+                  desc: "Years of airworthiness authority across experimental, standard certification, and production-level programs."
                 }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-4">

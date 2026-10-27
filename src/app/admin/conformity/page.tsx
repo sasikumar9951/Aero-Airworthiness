@@ -165,7 +165,7 @@ export default function AdminConformityDashboard() {
           </form>
 
           <div className="mt-8 pt-6 border-t border-white/5 text-center text-[10px] text-white/30 tracking-widest">
-            SECURE SHA-384 ENCRYPTED LAYER • MIDO COMPLIANT
+            SECURE SHA-384 ENCRYPTED LAYER • FAA-CMS COMPLIANT
           </div>
         </motion.div>
       </main>

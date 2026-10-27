@@ -157,7 +157,7 @@ export default function ContactPage() {
                    <Shield className="w-5 h-5 text-gold shrink-0" />
                    <div>
                       <h4 className="font-serif font-bold mb-1">DAR-F Integration</h4>
-                      <p className="text-xs text-white/40 leading-relaxed">Direct communication with your MIDO/ACO office.</p>
+                      <p className="text-xs text-white/40 leading-relaxed">Direct communication with your FAA-CMS/FAA-ECB office.</p>
                    </div>
                 </div>
                 <div className="flex gap-4">
